@@ -8,7 +8,7 @@ describe('phbidlaut login', () => {
     cy.get('#submitLogin').click()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
-    cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML')
+    cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#2')
     
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
@@ -70,12 +70,20 @@ describe('phbidlaut login', () => {
     
     cy.get('#volume_pengiriman').type('2 Unit Tiap Minggu')
     cy.get('#deskripsi_barang').type('Barang Sembako')
-
     cy.get('#tombol_lanjutkan').click()
-    
 
 
-    
+    //pilih peserta lelang
+    cy.get('#search_bidder').type('(IK){enter}')
+    cy.get('#pilih_semua_bidder').click()
+    cy.get('#tombol_lanjutkan').click()
+    cy.wait(5000) // tunggu 5 detik
+
+      cy.get('.alert')
+      .should('be.visible')
+      .and('contain', 'Anda berhasil membuat pengajuan lelang')
+
+
 
 
   });
