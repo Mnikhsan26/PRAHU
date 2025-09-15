@@ -368,7 +368,7 @@ describe('phbidlaut login', () => {
 
 
   //lelang md pilih dari history
-  it.skip('lelang_md_pilih_history', () => {
+  it.skip('tambah_lelang_md_pilih_history', () => {
     cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
