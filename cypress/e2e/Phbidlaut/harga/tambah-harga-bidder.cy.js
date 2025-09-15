@@ -1,6 +1,6 @@
 describe('phbidlaut login', () => {
    //Tambah harga
-  it.skip('login_succes_email', () => {
+  it.skip('tambah_harga', () => {
     cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('partner.ph2021@gmail.com')
@@ -31,7 +31,7 @@ describe('phbidlaut login', () => {
 
 
    //Tambah harga lebih dari satu
-  it('login_succes_email', () => {
+  it('tambah_harga_lebih_dari_satu', () => {
     cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('partner.ph2021@gmail.com')
@@ -105,7 +105,5 @@ describe('phbidlaut login', () => {
       .should('be.visible')
       .and('contain', 'Anda berhasil menambah harga')
   });
-
-
 
 })
