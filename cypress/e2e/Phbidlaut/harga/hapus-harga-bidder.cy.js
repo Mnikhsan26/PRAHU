@@ -13,10 +13,24 @@ describe('phbidlaut login', () => {
     cy.wait(2000) // tunggu 2 detik
     
     //hapus harga
-    cy.get('#delete_kelas')
+    cy.get('#delete_kelas .fa-solid')
       .eq(1)
       .click({ force: true })
-    cy.wait(3000) // tunggu 3 detik
+    cy.wait(2000) // tunggu 2 detik
+
+    cy.get('.swal2-confirm').click()
+    cy.wait(2000) // tunggu 2 detik
+
+    cy.get('.swal2-confirm')
+      .eq('OK')
+      // .should('have.text', 'OK')
+      .click()
+
+    cy.get('.alert')
+      .should('be.visible')
+      .and('contain', 'Anda berhasil mengedit harga')
+
+
 
     // cy.get('#select2-PelayaranID-container').type('MMM{enter}')
     // cy.get('#select2-JenisKontainerID-container').type('20 FR{enter}')
