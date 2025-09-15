@@ -45,10 +45,34 @@ describe('phbidlaut login', () => {
     cy.get('#budget_pengiriman').type('1000000')
 
     //pilih pelabuhan
-    cy.get('#select2-pelabuhan_asal-container')
-    .type('Kota Ambon')
-    .click()
-    // cy.get('#select2-pelabuhan_asal-result-djpm-1\,Atambua').click()
+    cy.get('#select2-pelabuhan_asal-container').type('Kota Bengkulu{enter}')
+    cy.get('#select2-pelabuhan_tujuan-container').type('Kota Bima{enter}')
+
+    //tempat asal
+    cy.get('#alamat_pic_asal')
+    .type('Jl. Rajawali No.109, Kemayoran, Kec. Krembangan, Surabaya, Jawa Timur 60176')
+
+    cy.get('#select2-id_kota_asal-container').type('Kab. Bungo{enter}')
+    cy.get('#nama_pic_asal').type('Ikhsan Asal')
+    cy.get('#telp_pic_asal').type('083830011881')
+
+    //tempat tujuan
+    cy.get('#alamat_pic_tujuan')
+    .type('Jl. Rajawali No.109, Kemayoran, Kec. Krembangan, Surabaya, Jawa Timur 60176')
+
+    cy.get('#select2-id_kota_tujuan-container').type('Kab. Empat Lawang{enter}')
+    cy.get('#nama_pic_tujuan').type('Ikhsan Tujuan')
+    cy.get('#telp_pic_tujuan').type('083830011881')
+
+    //informasi kontainer
+    cy.get('.select2-search__field').type('20 DRY{enter}')
+    cy.get('.select2-search__field').type('20 ISOTANK{enter}')
+    
+    cy.get('#volume_pengiriman').type('2 Unit Tiap Minggu')
+    cy.get('#deskripsi_barang').type('Barang Sembako')
+
+    cy.get('#tombol_lanjutkan').click()
+    
 
 
     
