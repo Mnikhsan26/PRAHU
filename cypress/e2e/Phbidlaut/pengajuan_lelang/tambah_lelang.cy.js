@@ -118,28 +118,24 @@ describe('phbidlaut login', () => {
     // cek history
     cy.get('#gunakan_data_lelang_lama').click()
     cy.get('#tgl_awal')
+      .clear()
       .type('01/05/2025{enter}')
+      .should('have.value', '01/05/2025')
+    cy.wait(2000) // tunggu 2 detik
 
     cy.get('#tgl_akhir')
+      .clear()
       .type('30/07/2025{enter}')
+      .should('have.value', '30/07/2025')
+    cy.wait(2000) // tunggu 2 detik
 
     cy.get('#lanjutcari').click()
+    cy.wait(5000) // tunggu 5 detik
 
     //pilih data lelang
     cy.get('#select2-pilih_lelang_lama-container')
-    .type('LELANG#1(IK)+18-07-2025/NRML{enter}')
+      .type('LELANG#1(IK)+18-07-2025/NRML{enter}')
 
- // cy.get('#tombol_lanjutkan').click()
-
-    //pilih peserta lelang
-    // cy.get('#search_bidder').type('(IK){enter}')
-    // cy.get('#pilih_semua_bidder').click()
-    // cy.get('#tombol_lanjutkan').click()
-    // cy.wait(5000) // tunggu 5 detik
-
-    //   cy.get('.alert')
-    //   .should('be.visible')
-    //   .and('contain', 'Anda berhasil membuat pengajuan lelang')
   });
 
 
@@ -315,8 +311,8 @@ describe('phbidlaut login', () => {
   });
 
 
-  //lelang normal pilih dari history
-  it.skip('lelang_normal_pilih_history', () => {
+  //lelang md pilih dari history
+  it.skip('lelang_md_pilih_history', () => {
     cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
@@ -324,7 +320,7 @@ describe('phbidlaut login', () => {
     cy.get('#submitLogin').click()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
-    cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#4')
+    cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#6')
     
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
@@ -349,38 +345,94 @@ describe('phbidlaut login', () => {
     // cek history
     cy.get('#gunakan_data_lelang_lama').click()
     cy.get('#tgl_awal')
+      .clear()
       .type('01/05/2025{enter}')
+      .should('have.value', '01/05/2025')
+    cy.wait(2000) // tunggu 2 detik
 
     cy.get('#tgl_akhir')
+      .clear()
       .type('30/07/2025{enter}')
+      .should('have.value', '30/07/2025')
+    cy.wait(2000) // tunggu 2 detik
 
     cy.get('#lanjutcari').click()
+    cy.wait(5000) // tunggu 5 detik
+
 
     //pilih data lelang
     cy.get('#select2-pilih_lelang_lama-container')
-    .type('LELANG#1(IK)+18-07-2025/NRML{enter}')
+      .type('LELANG#1(IK)+02-06-2025/MD{enter}')
 
-
-
-    
-    // cy.get('#tombol_lanjutkan').click()
-
-    //pilih peserta lelang
-    // cy.get('#search_bidder').type('(IK){enter}')
-    // cy.get('#pilih_semua_bidder').click()
-    // cy.get('#tombol_lanjutkan').click()
-    // cy.wait(5000) // tunggu 5 detik
-
-    //   cy.get('.alert')
-    //   .should('be.visible')
-    //   .and('contain', 'Anda berhasil membuat pengajuan lelang')
   });
 
 
+  //lelang md pilih dari history
+  it.skip('lelang_md_pilih_history', () => {
+    cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
+    cy.get('.heading_1').should('have.text','LOGIN')
+    cy.get('#email').type('pengirim.ph2021@gmail.com')
+    cy.get('#password').type('qwerty12345')
+    cy.get('#submitLogin').click()
+    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
+    cy.get('.link_1').click()
+    cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#6')
+    
+    //pilih tanggal lelang (buka lelang)
+    cy.get('#tanggal_buka_lelang')
+      .type('15/09/2025 14:30{enter}')
+      .should('have.value', '15/09/2025 14:30')
+
+    //pilih tanggal lelang (tutup lelang)
+    cy.get('#tanggal_tutup_lelang')
+      .type('15/09/2025 14:31{enter}')
+      .should('have.value', '15/09/2025 14:31')
+
+    //pilih tanggal lelang (rencana mulai kirim)
+    cy.get('#tanggal_mulai_kontrak')
+      .type('15/09/2025 14:32{enter}')
+      .should('have.value', '15/09/2025 14:32')
+
+    //pilih tanggal lelang (rencana akhir kirim)
+    cy.get('#tanggal_selesai_kontrak')
+      .type('15/09/2026 14:32{enter}')
+      .should('have.value', '15/09/2026 14:32')
+
+    // cek history
+    cy.get('#gunakan_data_lelang_lama').click()
+    cy.get('#tgl_awal')
+      .clear()
+      .type('01/05/2025{enter}')
+      .should('have.value', '01/05/2025')
+    cy.wait(2000) // tunggu 2 detik
+
+    cy.get('#tgl_akhir')
+      .clear()
+      .type('30/07/2025{enter}')
+      .should('have.value', '30/07/2025')
+    cy.wait(2000) // tunggu 2 detik
+
+    cy.get('#lanjutcari').click()
+    cy.wait(5000) // tunggu 5 detik
 
 
+    //pilih data lelang
+    cy.get('#select2-pilih_lelang_lama-container')
+      .type('LELANG#1(IK)+02-06-2025/MD{enter}')
+    cy.wait(5000) // tunggu 5 detik
 
+    cy.get('#tombol_lanjutkan').click()
 
+    //pilih peserta lelang
+    cy.get('#search_bidder').type('(IK){enter}')
+    cy.get('#pilih_semua_bidder').click()
+    cy.get('#tombol_lanjutkan').click()
+    cy.wait(5000) // tunggu 5 detik
 
+    cy.get('.alert')
+      .should('be.visible')
+      .and('contain', 'Anda berhasil membuat pengajuan lelang')
+
+  });
 
 })
