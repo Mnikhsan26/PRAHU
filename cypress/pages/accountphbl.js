@@ -5,7 +5,6 @@ class akun {
     password = '#password'
     buttonlogin = '#submitLogin'
 
-    
     BidOwner(){
         cy.get(this.emailbidowner).type('pengirim.ph2021@gmail.com')
     }
@@ -22,14 +21,9 @@ class akun {
         cy.get(this.password).type('qwerty12345')
     }
 
-
-
-
-
     BtnLogin(){
         cy.get(this.buttonlogin).click()
     }
-
 
 }
 export default new akun
