@@ -1,6 +1,6 @@
 describe('phbidlaut login', () => {
    //Tambah harga
-  it.skip('tambah_harga', () => {
+  it('tambah_harga', () => {
     cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('partner.ph2021@gmail.com')
@@ -16,7 +16,7 @@ describe('phbidlaut login', () => {
     cy.wait(2000) // tunggu 2 detik
     cy.get('#select2-PelayaranID-container').type('Meratus{enter}')
     cy.get('#select2-JenisKontainerID-container').type('20 DRY{enter}')
-    cy.get('#harga').type(3560000)
+    cy.get('#harga').type(5560000)
     cy.get('#mulai_berlaku')
       .clear()
       .type('01/09/2025{enter}')
