@@ -1,9 +1,11 @@
+import accountphbl from "../../../pages/accountphbl";
+
 describe('phbidlaut login', () => {
   //Cek alert email
   it('login_mandatory_email', () => {
     cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    cy.get('#submitLogin').click()
+    accountphbl.BtnLogin()
     cy.get('.popover-body').should('have.text','Masukkan Email / No. Whatsapp')
     cy.wait(2000) // tunggu 2 detik
   });
@@ -12,8 +14,8 @@ describe('phbidlaut login', () => {
   it('login_mandatory_katasandi', () => {
     cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    cy.get('#email').type('pengirim.ph2021@gmail.com')
-    cy.get('#submitLogin').click()
+    accountphbl.BidOwner()
+    accountphbl.BtnLogin()
     cy.get('.popover-body').should('have.text','Masukkan Password')
     cy.wait(2000) // tunggu 2 detik
   });
@@ -22,9 +24,9 @@ describe('phbidlaut login', () => {
   it('login_succes_email', () => {
     cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    cy.get('#email').type('pengirim.ph2021@gmail.com')
-    cy.get('#password').type('qwerty12345')
-    cy.get('#submitLogin').click()
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
   });
 
@@ -33,8 +35,8 @@ describe('phbidlaut login', () => {
     cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('emailtidakterdaftar@gmail.com')
-    cy.get('#password').type('qwerty12345')
-    cy.get('#submitLogin').click()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
     cy.get('.heading_1').should('have.text','LOGIN')
   });
 
@@ -42,9 +44,9 @@ describe('phbidlaut login', () => {
   it('login_invalid_password', () => {
     cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    cy.get('#email').type('pengirim.ph2021@gmail.com')
+    accountphbl.BidOwner()
     cy.get('#password').type('katasandisalah')
-    cy.get('#submitLogin').click()
+    accountphbl.BtnLogin()
     cy.get('.heading_1').should('have.text','LOGIN')
   });
 
@@ -53,8 +55,8 @@ describe('phbidlaut login', () => {
     cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('083830011881')
-    cy.get('#password').type('qwerty12345')
-    cy.get('#submitLogin').click()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
   });
 
