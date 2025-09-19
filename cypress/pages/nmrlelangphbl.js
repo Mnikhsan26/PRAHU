@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'
+
 class NmrLelangPhbl {
   static generate(tipe = 'NRML') {
     const now = new Date()
@@ -22,3 +24,35 @@ class NmrLelangPhbl {
 }
 
 export default NmrLelangPhbl
+
+export class LlgBlmBk {
+  static generateBlmbuka() {
+    const buka = dayjs().add(1, 'month')
+    const tutup = buka.add(1, 'minute')
+    const mulai = tutup.add(1, 'minute')
+    const akhir = mulai.add(1, 'minute')
+
+    return{
+      buka : buka.format('DD/MM/YYYY HH:mm'),
+      tutup : tutup.format('DD/MM/YYYY HH:mm'),
+      mulai : mulai.format('DD/MM/YYYY HH:mm'),
+      akhir : akhir.format('DD/MM/YYYY HH:mm'),
+    }
+  }
+}
+
+export class LlgTtp {
+  static generateTutup() {
+    const buka = dayjs()
+    const tutup = buka.add(1, 'month')
+    const mulai = tutup.add(1, 'minute')
+    const akhir = akhir.add(1, 'minute')
+
+    return{
+      buka : buka.format('DD/MM/YYYY HH:mm'),
+      tutup : tutup.format('DD/MM/YYYY HH:mm'),
+      mulai : mulai.format('DD/MM/YYYY HH:mm'),
+      akhir : akhir.format('DD/MM/YYYY HH:mm'),
+    }
+  }
+}

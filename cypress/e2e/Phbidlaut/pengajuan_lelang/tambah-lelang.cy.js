@@ -1,7 +1,9 @@
+import { LlgBlmBk } from "../../../pages/nmrlelangphbl";
+
 describe('phbidlaut login', () => {
   //tambah lelang normal
   it('tambah_lelang_normal', () => {
-    cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
     cy.get('#password').type('qwerty12345')
@@ -11,25 +13,35 @@ describe('phbidlaut login', () => {
     cy.isiNomorLelang('NRML')
     // cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#3')
     
+    
+    const dates = LlgBlmBk.generateBlmbuka ()
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
-      .type('19/09/2025 14:30{enter}')
-      .should('have.value', '19/09/2025 14:30')
+      .type(dates.buka + '{enter}')
+      .should('have.value', dates.buka)
+      // .type('19/09/2025 14:30{enter}')
+      // .should('have.value', '19/09/2025 14:30')
 
     //pilih tanggal lelang (tutup lelang)
     cy.get('#tanggal_tutup_lelang')
-      .type('19/09/2025 14:31{enter}')
-      .should('have.value', '19/09/2025 14:31')
+      .type(dates.tutup + '{enter}')
+      .should('have.value', dates.tutup)
+      // .type('19/09/2025 14:31{enter}')
+      // .should('have.value', '19/09/2025 14:31')
 
     //pilih tanggal lelang (rencana mulai kirim)
     cy.get('#tanggal_mulai_kontrak')
-      .type('19/09/2025 14:32{enter}')
-      .should('have.value', '19/09/2025 14:32')
+      .type(dates.mulai + '{enter}')
+      .should('have.value', dates.mulai)
+      // .type('19/09/2025 14:32{enter}')
+      // .should('have.value', '19/09/2025 14:32')
 
     //pilih tanggal lelang (rencana akhir kirim)
     cy.get('#tanggal_selesai_kontrak')
-      .type('19/09/2026 14:32{enter}')
-      .should('have.value', '19/09/2026 14:32')
+      .type(dates.akhir + '{enter}')
+      .should('have.value', dates.akhir)
+      // .type('19/09/2026 14:32{enter}')
+      // .should('have.value', '19/09/2026 14:32')
 
     //biaya termasuk
     cy.get('#biaya_asal_all').click()
@@ -74,7 +86,7 @@ describe('phbidlaut login', () => {
     cy.get('#tombol_lanjutkan').click()
 
     //pilih peserta lelang
-    cy.get('#search_bidder').type('(IK){enter}')
+    cy.get('#search_bidder').type('(QC){enter}')
     cy.get('#pilih_semua_bidder').click()
     cy.get('#tombol_lanjutkan').click()
     cy.wait(5000) // tunggu 5 detik
@@ -87,7 +99,7 @@ describe('phbidlaut login', () => {
 
   //lelang normal pilih dari history
   it.skip('lelang_normal_pilih_history', () => {
-    cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
     cy.get('#password').type('qwerty12345')
@@ -142,7 +154,7 @@ describe('phbidlaut login', () => {
 
   //tambah lelang normal pilih dari history
   it.skip('tambah_lelang_normal_pilih_history', () => {
-    cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
     cy.get('#password').type('qwerty12345')
@@ -202,7 +214,7 @@ describe('phbidlaut login', () => {
 
   //tambah lelang md
   it.skip('tambah_lelang_md', () => {
-    cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
     cy.get('#password').type('qwerty12345')
@@ -314,7 +326,7 @@ describe('phbidlaut login', () => {
 
   //lelang md pilih dari history
   it.skip('lelang_md_pilih_history', () => {
-    cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
     cy.get('#password').type('qwerty12345')
@@ -370,7 +382,7 @@ describe('phbidlaut login', () => {
 
   //lelang md pilih dari history
   it.skip('tambah_lelang_md_pilih_history', () => {
-    cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
     cy.get('#password').type('qwerty12345')
