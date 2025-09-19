@@ -1,6 +1,6 @@
 describe('phbidlaut login', () => {
   //tambah lelang normal
-  it.skip('tambah_lelang_normal', () => {
+  it('tambah_lelang_normal', () => {
     cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
@@ -8,27 +8,28 @@ describe('phbidlaut login', () => {
     cy.get('#submitLogin').click()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
-    cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#3')
+    cy.isiNomorLelang('NRML')
+    // cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#3')
     
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
-      .type('15/09/2025 14:30{enter}')
-      .should('have.value', '15/09/2025 14:30')
+      .type('19/09/2025 14:30{enter}')
+      .should('have.value', '19/09/2025 14:30')
 
     //pilih tanggal lelang (tutup lelang)
     cy.get('#tanggal_tutup_lelang')
-      .type('15/09/2025 14:31{enter}')
-      .should('have.value', '15/09/2025 14:31')
+      .type('19/09/2025 14:31{enter}')
+      .should('have.value', '19/09/2025 14:31')
 
     //pilih tanggal lelang (rencana mulai kirim)
     cy.get('#tanggal_mulai_kontrak')
-      .type('15/09/2025 14:32{enter}')
-      .should('have.value', '15/09/2025 14:32')
+      .type('19/09/2025 14:32{enter}')
+      .should('have.value', '19/09/2025 14:32')
 
     //pilih tanggal lelang (rencana akhir kirim)
     cy.get('#tanggal_selesai_kontrak')
-      .type('15/09/2026 14:32{enter}')
-      .should('have.value', '15/09/2026 14:32')
+      .type('19/09/2026 14:32{enter}')
+      .should('have.value', '19/09/2026 14:32')
 
     //biaya termasuk
     cy.get('#biaya_asal_all').click()

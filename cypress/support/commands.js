@@ -19,6 +19,8 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import NmrLelangPhbl from "../pages/nmrlelangphbl"
+
 
 Cypress.Commands.add('mockRecaptcha', () => {
   cy.window().then((win) => {
@@ -44,4 +46,16 @@ Cypress.Commands.add('solveRecaptcha', () => {
       recaptchaInput.dispatchEvent(event)
     }
   })
+})
+
+
+Cypress.Commands.add('isiNomorLelang', (tipe = 'normal', selector = '#nomor_lelang') => {
+  const nomor = NmrLelangPhbl.generate(tipe)
+  cy.get(selector).type(nomor)
+  cy.log(`Nomor Lelang (${tipe.toUpperCase()}): ${nomor}`)
+
+  // Simpan ke env agar bisa dipakai di step/test lain
+  Cypress.env('nomorLelang', nomor)
+
+  // return nomor
 })
