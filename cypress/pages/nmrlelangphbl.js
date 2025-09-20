@@ -46,7 +46,39 @@ export class LlgTtp {
     const buka = dayjs()
     const tutup = buka.add(1, 'month')
     const mulai = tutup.add(1, 'minute')
-    const akhir = akhir.add(1, 'minute')
+    const akhir = mulai.add(1, 'minute')
+
+    return{
+      buka : buka.format('DD/MM/YYYY HH:mm'),
+      tutup : tutup.format('DD/MM/YYYY HH:mm'),
+      mulai : mulai.format('DD/MM/YYYY HH:mm'),
+      akhir : akhir.format('DD/MM/YYYY HH:mm'),
+    }
+  }
+}
+
+export class LlgMlai {
+  static generateMulai() {
+    const buka = dayjs()
+    const tutup = buka.add(1, 'minute')
+    const mulai = tutup.add(1, 'month')
+    const akhir = mulai.add(1, 'minute')
+
+    return{
+      buka : buka.format('DD/MM/YYYY HH:mm'),
+      tutup : tutup.format('DD/MM/YYYY HH:mm'),
+      mulai : mulai.format('DD/MM/YYYY HH:mm'),
+      akhir : akhir.format('DD/MM/YYYY HH:mm'),
+    }
+  }
+}
+
+export class LlgAkhr {
+  static generateAkhir() {
+    const buka = dayjs()
+    const tutup = buka.add(1, 'minute')
+    const mulai = tutup.add(1, 'minute')
+    const akhir = mulai.add(1, 'month')
 
     return{
       buka : buka.format('DD/MM/YYYY HH:mm'),
