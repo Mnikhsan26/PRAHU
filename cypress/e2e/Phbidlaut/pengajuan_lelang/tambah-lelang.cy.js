@@ -381,9 +381,6 @@ describe('phbidlaut login', () => {
   });
 
 
-
-
-
   //lelang normal pilih dari history
   it.skip('lelang_normal_pilih_history', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
