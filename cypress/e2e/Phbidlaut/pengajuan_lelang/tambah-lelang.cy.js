@@ -2,7 +2,7 @@ import { LlgAkhr, LlgBlmBk, LlgMlai, LlgTtp } from "../../../pages/nmrlelangphbl
 
 describe('phbidlaut login', () => {
   //tambah lelang normal belum buka
-  it.skip('tambah_lelang_normal_blmbuka', () => {
+  it('tambah_lelang_normal_blmbuka', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
@@ -97,7 +97,7 @@ describe('phbidlaut login', () => {
 
 
   //tambah lelang normal dibuka
-  it.skip('tambah_lelang_normal_dbuka', () => {
+  it('tambah_lelang_normal_dbuka', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
