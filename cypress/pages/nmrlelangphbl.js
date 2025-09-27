@@ -14,7 +14,7 @@ class NmrLelangPhbl {
 
     const tipeMap = {
       normal: 'NRML',
-      multidrop: 'MDRP'
+      multidrop: 'MLTD'
     }
 
     const kodeTipe = tipeMap[tipe.toLowerCase()] || tipe

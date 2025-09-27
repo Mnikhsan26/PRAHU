@@ -390,7 +390,8 @@ describe('phbidlaut login', () => {
     cy.get('#submitLogin').click()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
-    cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#4')
+    cy.isiNomorLelang('NRML')
+    // cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#4')
     
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
@@ -445,7 +446,8 @@ describe('phbidlaut login', () => {
     cy.get('#submitLogin').click()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
-    cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#4')
+    cy.isiNomorLelang('NRML')
+    // cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#4')
     
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
@@ -505,7 +507,8 @@ describe('phbidlaut login', () => {
     cy.get('#submitLogin').click()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
-    cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#5')
+    cy.isiNomorLelang('MLTD')
+    // cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#5')
     
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
@@ -617,7 +620,8 @@ describe('phbidlaut login', () => {
     cy.get('#submitLogin').click()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
-    cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#6')
+    cy.isiNomorLelang('MLTD')
+    // cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#6')
     
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
@@ -673,7 +677,8 @@ describe('phbidlaut login', () => {
     cy.get('#submitLogin').click()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
-    cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#6')
+    cy.isiNomorLelang('MLTD')
+    // cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#6')
     
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
