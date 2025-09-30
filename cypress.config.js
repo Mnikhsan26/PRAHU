@@ -24,3 +24,14 @@ module.exports = {
     }
   }
 };
+
+module.exports = defineConfig({
+  e2e: {
+    setupNodeEvents(on, config) {
+      // event listener kalau ada
+    },
+    // baseUrl: "http://localhost:3000", // opsional
+    viewportWidth: 1280,   // tambahkan ini
+    viewportHeight: 720,   // tambahkan ini
+  },
+});
