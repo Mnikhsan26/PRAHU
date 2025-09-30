@@ -85,23 +85,26 @@ describe('case input unit', () => {
     // cy.get('.vertical-nav-menu > :nth-child(7) > .sidebar_icon').click()
     cy.get('.col-12 > div > :nth-child(2)').should('have.text','Daftar Pengajuan Lelang')
     cy.wait(2000) // tunggu 2 detik
-    cy.get('a.sidebar_icon').contains('DAFTAR ORDER').click()
+    cy.get('a.sidebar_icon')
+      .contains('DAFTAR ORDER').click()
     cy.get('#btn_filter1').click()
-    cy.get(':nth-child(2) > .position-relative > .input-group > #nomor_lelang')
+    cy.get('#nomor_lelang')
       .type('Lelang/IK/01NRML{enter}')
+    cy.get('.mb_15 > :nth-child(4) .select2-selection').click()
+    cy.get('.select2-search__field').type('Proses Validasi{enter}')
     cy.get('#view_filter_orderlist1 > :nth-child(1) > .main-card > .card-body > .row > .col-md-12 > div > .button_filter')
       .click()
+    // validasi order
+    cy.contains('a', 'Validasi Order').click()
+    cy.get('#tombol_submit').click()
+    cy.get('.alert').should('have.text','Anda berhasil melakukan validasi order')
+
+
+      
+
+
 
   
-
-
-
-
-
-
-
-
-
       
 
 
