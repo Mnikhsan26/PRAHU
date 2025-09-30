@@ -77,7 +77,26 @@ describe('case input unit', () => {
     //logout bid owner
     cy.visit('https://phbidlautdev.prahu-hub.com/user/do_logout')
 
-    
+    //login admin
+    accountphbl.Admin()
+    accountphbl.PassAdm()
+    accountphbl.BtnLogin()
+    cy.wait(2000) // tunggu 2 detik
+    // cy.get('.vertical-nav-menu > :nth-child(7) > .sidebar_icon').click()
+    cy.get('.col-12 > div > :nth-child(2)').should('have.text','Daftar Pengajuan Lelang')
+    cy.wait(2000) // tunggu 2 detik
+    cy.get('a.sidebar_icon').contains('DAFTAR ORDER').click()
+    cy.get('#btn_filter1').click()
+    cy.get(':nth-child(2) > .position-relative > .input-group > #nomor_lelang')
+      .type('Lelang/IK/01NRML{enter}')
+    cy.get('#view_filter_orderlist1 > :nth-child(1) > .main-card > .card-body > .row > .col-md-12 > div > .button_filter')
+      .click()
+
+  
+
+
+
+
 
 
 

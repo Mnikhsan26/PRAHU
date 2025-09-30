@@ -25,7 +25,7 @@ describe('phbidlaut login', () => {
     cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     accountphbl.Admin()
-    cy.get('#password').type('prahu12345.')
+    accountphbl.PassAdm()
     accountphbl.BtnLogin()
     cy.get('.col-12 > div > :nth-child(2)').should('have.text','Daftar Pengajuan Lelang')
   });

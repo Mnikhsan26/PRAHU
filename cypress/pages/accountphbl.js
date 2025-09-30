@@ -21,6 +21,10 @@ class akun {
         cy.get(this.password).type('qwerty12345')
     }
 
+    PassAdm(){
+        cy.get(this.password).type('prahu12345.')
+    }
+
     BtnLogin(){
         cy.get(this.buttonlogin).click()
     }
