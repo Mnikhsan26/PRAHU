@@ -90,7 +90,7 @@ describe('phbidlaut login', () => {
     cy.get('#tombol_lanjutkan').click()
     cy.wait(5000) // tunggu 5 detik
 
-      cy.get('.alert')
+    cy.get('.alert')
       .should('be.visible')
       .and('contain', 'Anda berhasil membuat pengajuan lelang')
   });
@@ -280,7 +280,7 @@ describe('phbidlaut login', () => {
     cy.get('#tombol_lanjutkan').click()
     cy.wait(5000) // tunggu 5 detik
 
-      cy.get('.alert')
+    cy.get('.alert')
       .should('be.visible')
       .and('contain', 'Anda berhasil membuat pengajuan lelang')
   });
@@ -375,7 +375,7 @@ describe('phbidlaut login', () => {
     cy.get('#tombol_lanjutkan').click()
     cy.wait(5000) // tunggu 5 detik
 
-      cy.get('.alert')
+    cy.get('.alert')
       .should('be.visible')
       .and('contain', 'Anda berhasil membuat pengajuan lelang')
   });
@@ -538,29 +538,29 @@ describe('phbidlaut login', () => {
     const dates = LlgAkhr.generateAkhir()
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
-    .type(dates.buka + '{enter}')
-    .should('have.value', dates.buka)
+      .type(dates.buka + '{enter}')
+      .should('have.value', dates.buka)
     // .type('15/09/2025 14:30{enter}')
     // .should('have.value', '15/09/2025 14:30')
 
-  //pilih tanggal lelang (tutup lelang)
-  cy.get('#tanggal_tutup_lelang')
-    .type(dates.tutup + '{enter}')
-    .should('have.value', dates.tutup)
+    //pilih tanggal lelang (tutup lelang)
+    cy.get('#tanggal_tutup_lelang')
+      .type(dates.tutup + '{enter}')
+      .should('have.value', dates.tutup)
     // .type('15/09/2025 14:31{enter}')
     // .should('have.value', '15/09/2025 14:31')
 
-  //pilih tanggal lelang (rencana mulai kirim)
-  cy.get('#tanggal_mulai_kontrak')
-    .type(dates.mulai + '{enter}')
-    .should('have.value', dates.mulai)
+    //pilih tanggal lelang (rencana mulai kirim)
+    cy.get('#tanggal_mulai_kontrak')
+      .type(dates.mulai + '{enter}')
+      .should('have.value', dates.mulai)
     // .type('15/09/2025 14:32{enter}')
     // .should('have.value', '15/09/2025 14:32')
 
-  //pilih tanggal lelang (rencana akhir kirim)
-  cy.get('#tanggal_selesai_kontrak')
-    .type(dates.akhir + '{enter}')
-    .should('have.value', dates.akhir)
+    //pilih tanggal lelang (rencana akhir kirim)
+    cy.get('#tanggal_selesai_kontrak')
+      .type(dates.akhir + '{enter}')
+      .should('have.value', dates.akhir)
     // .type('15/09/2026 14:32{enter}')
     // .should('have.value', '15/09/2026 14:32')
 
@@ -586,7 +586,7 @@ describe('phbidlaut login', () => {
 
     //tempat asal
     cy.get('#alamat_pic_asal_multidrop')
-    .type('Jl. Rajawali No.109, Kemayoran, Kec. Krembangan, Surabaya, Jawa Timur 60176')
+      .type('Jl. Rajawali No.109, Kemayoran, Kec. Krembangan, Surabaya, Jawa Timur 60176')
 
     cy.get('#select2-id_kota_asal_multidrop-container').type('Kab. Bungo{enter}')
     cy.get('#nama_pic_asal_multidrop').type('Ikhsan Asal')
@@ -594,36 +594,36 @@ describe('phbidlaut login', () => {
 
     //tempat tujuan md 1
     cy.get('#alamat_pic_asal_multidropOPPP')
-    .type('Jl. Rajawali No.109, Kemayoran, Kec. Krembangan, Surabaya, Jawa Timur 60176')
+      .type('Jl. Rajawali No.109, Kemayoran, Kec. Krembangan, Surabaya, Jawa Timur 60176')
     cy.get('[id^="select2-kota_tujuan_multidrop"]')
-    .eq(0).type('Kab. Empat Lawang{enter}')
+      .eq(0).type('Kab. Empat Lawang{enter}')
     cy.get(':nth-child(4) > .col-width-19_ > .form-group > .form-control')
-    .type('Ikhsan Tujuan')
+      .type('Ikhsan Tujuan')
     cy.get(':nth-child(4) > .col-width-19 > .form-group > .form-control')
-    .eq(0).type('083830011881')
+      .eq(0).type('083830011881')
 
     //tempat tujuan md 2
     cy.get(':nth-child(5) > .col-md-12 > .form-group > .form-control')
-    .type('Jl. Mangga Muda')
+      .type('Jl. Mangga Muda')
     cy.get('[id^="select2-kota_tujuan_multidrop"]')
-    .eq(1).type('Kab. Agam{enter}')
+      .eq(1).type('Kab. Agam{enter}')
     cy.get(':nth-child(5) > .col-width-19_ > .form-group > .form-control')
-    .type('Ikhsan Tujuan 2')
+      .type('Ikhsan Tujuan 2')
     cy.get(':nth-child(5) > .col-width-19 > .form-group > .form-control')
-    .type('0838300118812')
+      .type('0838300118812')
 
     //tambah baris
     cy.get('#tombolTambahTujuan > .link_2').click()
 
     //tempat tujuan md 3
     cy.get(':nth-child(1) > .row > .col-md-12 > .form-group > .form-control')
-    .type('Jl. Ikan Dorang')
+      .type('Jl. Ikan Dorang')
     cy.get('[id^="select2-kota_tujuan_multidrop"]')
-    .eq(2).type('Kab. Bandung Barat{enter}')
+      .eq(2).type('Kab. Bandung Barat{enter}')
     cy.get(':nth-child(1) > .row > .col-width-19_ > .form-group > .form-control')
-    .type('Ikhsan Tujuan 3')
+      .type('Ikhsan Tujuan 3')
     cy.get('.col-md-3 > .form-group > .form-control')
-    .type('0838300118813')
+      .type('0838300118813')
 
     //informasi kontainer
     cy.get('.select2-search__field').type('20 DRY{enter}')
@@ -639,7 +639,7 @@ describe('phbidlaut login', () => {
     cy.get('#tombol_lanjutkan').click()
     cy.wait(5000) // tunggu 5 detik
 
-      cy.get('.alert')
+    cy.get('.alert')
       .should('be.visible')
       .and('contain', 'Anda berhasil membuat pengajuan lelang')
   });
@@ -660,29 +660,29 @@ describe('phbidlaut login', () => {
     const dates = LlgAkhr.generateAkhir()
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
-    .type(dates.buka + '{enter}')
-    .should('have.value', dates.buka)
+      .type(dates.buka + '{enter}')
+      .should('have.value', dates.buka)
     // .type('15/09/2025 14:30{enter}')
     // .should('have.value', '15/09/2025 14:30')
 
-  //pilih tanggal lelang (tutup lelang)
-  cy.get('#tanggal_tutup_lelang')
-    .type(dates.tutup + '{enter}')
-    .should('have.value', dates.tutup)
+    //pilih tanggal lelang (tutup lelang)
+    cy.get('#tanggal_tutup_lelang')
+      .type(dates.tutup + '{enter}')
+      .should('have.value', dates.tutup)
     // .type('15/09/2025 14:31{enter}')
     // .should('have.value', '15/09/2025 14:31')
 
-  //pilih tanggal lelang (rencana mulai kirim)
-  cy.get('#tanggal_mulai_kontrak')
-    .type(dates.mulai + '{enter}')
-    .should('have.value', dates.mulai)
+    //pilih tanggal lelang (rencana mulai kirim)
+    cy.get('#tanggal_mulai_kontrak')
+      .type(dates.mulai + '{enter}')
+      .should('have.value', dates.mulai)
     // .type('15/09/2025 14:32{enter}')
     // .should('have.value', '15/09/2025 14:32')
 
-  //pilih tanggal lelang (rencana akhir kirim)
-  cy.get('#tanggal_selesai_kontrak')
-    .type(dates.akhir + '{enter}')
-    .should('have.value', dates.akhir)
+    //pilih tanggal lelang (rencana akhir kirim)
+    cy.get('#tanggal_selesai_kontrak')
+      .type(dates.akhir + '{enter}')
+      .should('have.value', dates.akhir)
     // .type('15/09/2026 14:32{enter}')
     // .should('have.value', '15/09/2026 14:32')
 
@@ -726,15 +726,15 @@ describe('phbidlaut login', () => {
     const dates = LlgAkhr.generateAkhir()
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
-    .type(dates.buka + '{enter}')
-    .should('have.value', dates.buka)
+     .type(dates.buka + '{enter}')
+      .should('have.value', dates.buka)
     // .type('15/09/2025 14:30{enter}')
     // .should('have.value', '15/09/2025 14:30')
 
-  //pilih tanggal lelang (tutup lelang)
-  cy.get('#tanggal_tutup_lelang')
-    .type(dates.tutup + '{enter}')
-    .should('have.value', dates.tutup)
+    //pilih tanggal lelang (tutup lelang)
+    cy.get('#tanggal_tutup_lelang')
+      .type(dates.tutup + '{enter}')
+     .should('have.value', dates.tutup)
     // .type('15/09/2025 14:31{enter}')
     // .should('have.value', '15/09/2025 14:31')
 
