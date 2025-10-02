@@ -154,8 +154,10 @@ describe('case input unit', () => {
       .eq(2).type('PHBD21033{enter}')
 
     cy.get('#btn_submit').click()
+    cy.wait(2000) // tunggu 2 detik
     cy.get('.swal2-cancel').click()
-    cy.get('.alert.alert_positif').should('have.text','Anda berhasil input unit')
+    
+    cy.get('a.alert_positif').should('have.text','Anda berhasil input unit')
     
 
 
