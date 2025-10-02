@@ -1,4 +1,4 @@
-import { LlgAkhr, LlgBlmBk, LlgMlai, LlgTtp } from "../../../pages/nmrlelangphbl";
+import { LlgAkhr, LlgBlmBk, LlgMlai, LlgTtp } from "../../../../pages/nmrlelangphbl";
 
 describe('phbidlaut login', () => {
   //tambah lelang normal belum buka
