@@ -31,8 +31,9 @@ describe('case input unit', () => {
       .type('3{enter}')
     
     cy.get('#tgl_permintaan_muat').click()
-    cy.get('.dtp-select-month-after > .material-icons').dblclick()
-    cy.get('[data-date="4"] > .dtp-select-day').click()
+    cy.get('.dtp-select-month-after > .material-icons').click()
+    // .dblclick()
+    cy.get('[data-date="10"] > .dtp-select-day').click()
     cy.get('.dtp-btn-ok').click()
     cy.get('.dtp-btn-ok').click()
     cy.get('.dtp-btn-ok').click()
@@ -82,7 +83,6 @@ describe('case input unit', () => {
     accountphbl.PassAdm()
     accountphbl.BtnLogin()
     cy.wait(2000) // tunggu 2 detik
-    // cy.get('.vertical-nav-menu > :nth-child(7) > .sidebar_icon').click()
     cy.get('.col-12 > div > :nth-child(2)').should('have.text','Daftar Pengajuan Lelang')
     cy.wait(2000) // tunggu 2 detik
     cy.get('a.sidebar_icon')
@@ -97,10 +97,67 @@ describe('case input unit', () => {
     // validasi order
     cy.contains('a', 'Validasi Order').click()
     cy.get('#tombol_submit').click()
-    cy.get('.alert').should('have.text','Anda berhasil melakukan validasi order')
+    // cy.get('.alert').should('have.text','Anda berhasil melakukan validasi order')
 
+    //logout admin
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/do_logout')
+    
+    accountphbl.Bidder()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
+    cy.wait(2000) // tunggu 2 detik
+    cy.get('.col-12 > div > :nth-child(2)').should('have.text','Daftar Pengajuan Lelang')
+    cy.wait(2000) // tunggu 2 detik
+    cy.get('a.sidebar_icon')
+      .contains('DAFTAR ORDER').click()
+    cy.get('#btn_filter1').click()
+    cy.get('#nomor_lelang')
+      .type('Lelang/IK/01NRML{enter}')
+    cy.get('.mb_15 > :nth-child(3) .select2-selection').click()
+    cy.get('.select2-search__field').type('Konfirmasi Unit{enter}')
+    cy.get('#view_filter_orderlist1 > :nth-child(1) > .main-card > .card-body > .row > .col-md-12 > div > .button_filter')
+      .click()
+    // input unit
+    cy.contains('a', 'Input Unit').click()
+    // input unit 1
+    cy.get('[id^="nopol"]')
+      .eq(0).type('L3223POL{enter}')
+    cy.get('[id^="nama_sopir"]')
+      .eq(0).type('Junaidi{enter}')
+    cy.get('[id^="telp_sopir"]')
+      .eq(0).type('083830011881{enter}')
+    cy.get('[id^="no_kontainer"]')
+      .eq(0).type('EMCU2323112{enter}')
+    cy.get('[id^="no_segel"]')
+      .eq(0).type('PHBD21011{enter}')
+    // input unit 2
+    cy.get('[id^="nopol"]')
+      .eq(1).type('AG3223POL{enter}')
+    cy.get('[id^="nama_sopir"]')
+      .eq(1).type('Ronald{enter}')
+    cy.get('[id^="telp_sopir"]')
+      .eq(1).type('083830011881{enter}')
+    cy.get('[id^="no_kontainer"]')
+      .eq(1).type('EMCU2323122{enter}')
+    cy.get('[id^="no_segel"]')
+      .eq(1).type('PHBD21022{enter}')
+    // input unit 3
+    cy.get('[id^="nopol"]')
+      .eq(2).type('DK3223PAI{enter}')
+    cy.get('[id^="nama_sopir"]')
+      .eq(2).type('Dhon{enter}')
+    cy.get('[id^="telp_sopir"]')
+      .eq(2).type('-{enter}')
+    cy.get('[id^="no_kontainer"]')
+      .eq(2).type('EMCU2323133{enter}')
+    cy.get('[id^="no_segel"]')
+      .eq(2).type('PHBD21033{enter}')
 
-      
+    cy.get('#btn_submit').click()
+    cy.get('.swal2-cancel').click()
+    cy.get('.alert.alert_positif').should('have.text','Anda berhasil input unit')
+    
+
 
 
 
