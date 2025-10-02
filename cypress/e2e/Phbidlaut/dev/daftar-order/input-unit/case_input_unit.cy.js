@@ -3,7 +3,7 @@ import accountphbl from "../../../../../pages/accountphbl";
 describe('case input unit', () => {
   
 
-  it('login_succes_email', () => {
+  it('bidowner_order', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     
@@ -74,9 +74,14 @@ describe('case input unit', () => {
     cy.get('#terms').click()
     cy.get('#submitonce1').click()
     cy.wait(2000) // tunggu 2 detik
+    cy.get('.alert').should('contain.text', 'Anda berhasil input perjanjian pengiriman')
 
-    //logout bid owner
-    cy.visit('https://phbidlautdev.prahu-hub.com/user/do_logout')
+    });
+
+
+  it('admin_validasi', () => {
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.get('.heading_1').should('have.text','LOGIN')
 
     //login admin
     accountphbl.Admin()
@@ -94,13 +99,20 @@ describe('case input unit', () => {
     cy.get('.select2-search__field').type('Proses Validasi{enter}')
     cy.get('#view_filter_orderlist1 > :nth-child(1) > .main-card > .card-body > .row > .col-md-12 > div > .button_filter')
       .click()
+    cy.wait(2000) // tunggu 2 detik
+    
     // validasi order
     cy.contains('a', 'Validasi Order').click()
     cy.get('#tombol_submit').click()
-    // cy.get('.alert').should('have.text','Anda berhasil melakukan validasi order')
+    cy.wait(2000) // tunggu 2 detik
+    cy.get('.alert').should('contain.text', 'Anda berhasil melakukan validasi order')
+    
+    });
 
-    //logout admin
-    cy.visit('https://phbidlautdev.prahu-hub.com/user/do_logout')
+
+  it('partner_input_unit', () => {
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.get('.heading_1').should('have.text','LOGIN')
     
     accountphbl.Bidder()
     accountphbl.PassAkun()
@@ -117,6 +129,7 @@ describe('case input unit', () => {
     cy.get('.select2-search__field').type('Konfirmasi Unit{enter}')
     cy.get('#view_filter_orderlist1 > :nth-child(1) > .main-card > .card-body > .row > .col-md-12 > div > .button_filter')
       .click()
+    cy.wait(2000) // tunggu 2 detik
     // input unit
     cy.contains('a', 'Input Unit').click()
     // input unit 1
@@ -157,21 +170,8 @@ describe('case input unit', () => {
     cy.wait(2000) // tunggu 2 detik
     cy.get('.swal2-cancel').click()
     
-    cy.get('a.alert_positif').should('have.text','Anda berhasil input unit')
-    
+    cy.get('.alert').should('contain.text', 'Anda berhasil input unit')
 
-
-
-
-  
-      
-
-
-
-
-
-  });
-
-
+    });
 
 })
