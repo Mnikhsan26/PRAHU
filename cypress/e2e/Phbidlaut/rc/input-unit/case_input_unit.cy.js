@@ -3,7 +3,7 @@ import accountphbl from "../../../../../pages/accountphbl";
 describe('case input unit', () => {
   
   it('bidowner_order', () => {
-    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautrc.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     
     //bid owner login
@@ -20,7 +20,7 @@ describe('case input unit', () => {
 
     cy.get('#tombol_filter').click()
     cy.get('#select2-bidder-container')
-      .type('PT. Perusahaan Pelayaran Nusantara Panurjwan{enter}')
+      .type('PT. Lancar Jaya Abadi Jaya Sentosa (IK){enter}')
     cy.get('#tombol_filter_submit').click()
     cy.wait(2000) // tunggu 2 detik
     cy.get('.tabel_hasil_penawaran_tr_top_right > [style="display: block;"] > .tombol-pesan-link > .btn').click() //tombol pesan
@@ -79,7 +79,7 @@ describe('case input unit', () => {
 
 
   it('admin_validasi', () => {
-    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautrc.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
 
     //login admin
@@ -110,7 +110,7 @@ describe('case input unit', () => {
 
 
   it('bidder_input_unit', () => {
-    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautrc.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     
     accountphbl.Bidder()
@@ -179,7 +179,7 @@ describe('case input unit', () => {
 describe('case lewati unit', () => {
   
   it('bidowner_order', () => {
-    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautrc.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     
     //bid owner login
@@ -196,7 +196,7 @@ describe('case lewati unit', () => {
 
     cy.get('#tombol_filter').click()
     cy.get('#select2-bidder-container')
-      .type('PT. Perusahaan Pelayaran Nusantara Panurjwan{enter}')
+      .type('PT. Lancar Jaya Abadi Jaya Sentosa (IK){enter}')
     cy.get('#tombol_filter_submit').click()
     cy.wait(2000) // tunggu 2 detik
     cy.get('.tabel_hasil_penawaran_tr_top_right > [style="display: block;"] > .tombol-pesan-link > .btn').click() //tombol pesan
@@ -255,7 +255,7 @@ describe('case lewati unit', () => {
 
 
   it('admin_validasi', () => {
-    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautrc.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
 
     //login admin
@@ -286,7 +286,7 @@ describe('case lewati unit', () => {
 
     
   it('bidder_lewati_input_unit', () => {
-    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautrc.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     
     accountphbl.Bidder()
@@ -325,7 +325,7 @@ describe('case lewati unit', () => {
 describe('create order', () => {
 
   it('bidowner_order', () => {
-    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautrc.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     
     //bid owner login
@@ -342,7 +342,7 @@ describe('create order', () => {
 
     cy.get('#tombol_filter').click()
     cy.get('#select2-bidder-container')
-      .type('PT. Perusahaan Pelayaran Nusantara Panurjwan{enter}')
+      .type('PT. Lancar Jaya Abadi Jaya Sentosa (IK){enter}')
     cy.get('#tombol_filter_submit').click()
     cy.wait(2000) // tunggu 2 detik
     cy.get('.tabel_hasil_penawaran_tr_top_right > [style="display: block;"] > .tombol-pesan-link > .btn').click() //tombol pesan
@@ -400,7 +400,7 @@ describe('create order', () => {
     });
 
   it('admin_validasi', () => {
-    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautrc.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
 
     //login admin
