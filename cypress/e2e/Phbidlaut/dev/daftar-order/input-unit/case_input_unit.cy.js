@@ -1,4 +1,5 @@
 import accountphbl from "../../../../../pages/accountphbl";
+import orderphbl from "../../../../../pages/orderphbl";
 
 describe('case input unit', () => {
   
@@ -13,10 +14,7 @@ describe('case input unit', () => {
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
 
     //bid owner order
-    cy.get('#masukkan_nomor_lelang')
-      .type('Lelang/IK/01NRML{enter}')
-    cy.wait(2000) // tunggu 2 detik
-    cy.get('#klikMencari').click()
+    orderphbl.LelangOrder()
 
     cy.get('#tombol_filter').click()
     cy.get('#select2-bidder-container')
@@ -189,10 +187,7 @@ describe('case lewati unit', () => {
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
 
     //bid owner order
-    cy.get('#masukkan_nomor_lelang')
-      .type('Lelang/IK/01NRML{enter}')
-    cy.wait(2000) // tunggu 2 detik
-    cy.get('#klikMencari').click()
+    orderphbl.LelangOrder()
 
     cy.get('#tombol_filter').click()
     cy.get('#select2-bidder-container')
@@ -335,10 +330,7 @@ describe('create order', () => {
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
 
     //bid owner order
-    cy.get('#masukkan_nomor_lelang')
-      .type('Lelang/IK/01NRML{enter}')
-    cy.wait(2000) // tunggu 2 detik
-    cy.get('#klikMencari').click()
+    orderphbl.LelangOrder()
 
     cy.get('#tombol_filter').click()
     cy.get('#select2-bidder-container')
