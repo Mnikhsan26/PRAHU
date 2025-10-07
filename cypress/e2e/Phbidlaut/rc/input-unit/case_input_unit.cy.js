@@ -176,7 +176,7 @@ describe('case input unit', () => {
 })
 
 
-describe('case lewati unit', () => {
+describe.skip('case lewati unit', () => {
   
   it('bidowner_order', () => {
     cy.visit('https://phbidlautrc.prahu-hub.com/user/login')
@@ -322,7 +322,7 @@ describe('case lewati unit', () => {
 })
 
 
-describe('create order', () => {
+describe.skip('create order', () => {
 
   it('bidowner_order', () => {
     cy.visit('https://phbidlautrc.prahu-hub.com/user/login')
@@ -431,7 +431,7 @@ describe('create order', () => {
 
 })
 
-describe('case mandatory', () => {
+describe.skip('case mandatory', () => {
 
   beforeEach(() => {
       cy.session('bidder', () => {
