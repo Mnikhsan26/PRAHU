@@ -1,3 +1,5 @@
+import dayjs from "dayjs"
+
 class tracking{
     filterststrack = '[style="width:20%"] > .position-relative > .input-group > .select2-container > .selection > .select2-selection'
     actiontracking = ':nth-child(2) > [style="border-top-right-radius: 5px!important; text-align: center;padding-right: 15px; border-bottom-right-radius: 5px!important;"] > .btn'
@@ -13,12 +15,18 @@ class tracking{
     tugas_selesai = '#submitSelesaiPenugasan'
 
     isi_ambil_kontainer = ':nth-child(1) > .panel-body > .col-md-12 > .form-row > .am-flex > .tombolnya > .btn-action-mobile > .btn'
-    // popup_isi_ak = '#modalisiambil > #modall > .modal-content > #form-edit > .modal-footer > .btn-red'
+
+    tanggal_tracking = 
 
 
     StsTrack(){
         cy.get(this.filterststrack).click()
         cy.get('.select2-search__field').type('Proses Penugasan{enter}')
+    }
+
+    StsTrackMenunggu(){
+        cy.get(this.filterststrack).click()
+        cy.get('.select2-search__field').type('Menunggu Proses{enter}')
     }
 
     BtnTracking(){
@@ -83,7 +91,6 @@ class tracking{
         cy.get('#btnmodalambil').click()
 
     }
-
 
 }
 

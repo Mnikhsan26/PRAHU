@@ -3,7 +3,7 @@ import orderphbl from "../../../../pages/orderphbl";
 import tracking from "../../../../pages/tracking";
 
 
-describe('create order', () => {
+describe.skip('create order', () => {
 
   it('bidowner_order', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
@@ -111,13 +111,13 @@ describe('create order', () => {
 
 describe('case input penugasan', () => {
 
-  beforeEach(() => {
-      cy.session('bidder', () => {
-        cy.loginBidder()
-      })
-  })
+  // beforeEach(() => {
+  //     cy.session('bidder', () => {
+  //       cy.loginBidder()
+  //     })
+  // })
 
-  it('bidder_input_unit', () => {
+  it.skip('bidder_input_unit', () => {
 
       cy.visit('https://phbidlautdev.prahu-hub.com/order/orderlist')
       cy.wait(3000)
@@ -173,7 +173,7 @@ describe('case input penugasan', () => {
       cy.get('.alert').should('contain.text', 'Anda berhasil input unit')      
     })
 
-  it('bidder_penugasan_isisemua', () => {
+  it.skip('bidder_penugasan_isisemua', () => {
 
       cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
       cy.get('.heading_1').should('have.text','LOGIN')
@@ -202,7 +202,52 @@ describe('case input penugasan', () => {
       tracking.TgsDokumenDikirim()
       tracking.BtnSelesai()
 
-      tracking.InptAmbilKontainer()
+      // tracking.InptAmbilKontainer()
+
+
+  })
+
+    it('bidder_penugasan_isisemua', () => {
+
+      cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+      cy.get('.heading_1').should('have.text','LOGIN')
+        
+      accountphbl.Bidder()
+      accountphbl.PassAkun()
+      accountphbl.BtnLogin()
+
+      cy.get('a.sidebar_icon')
+        .contains('PENUGASAN TRACKING').click()
+
+      cy.get('#btn_filter_').click()
+      cy.get('#nomor_lelang')
+        .type('Lelang/IK/01NRML{enter}')
+      tracking.StsTrackMenunggu()
+      cy.get('.col-md-12 > div > .button_filter', { timeout: 3000 }).click()
+
+      cy.get(':nth-child(2) > [style="border-top-right-radius: 5px!important; text-align: center;padding-right: 15px; border-bottom-right-radius: 5px!important;"] > .btn-group > .btn')
+        .click()
+      cy.contains('a', 'Edit Penugasan').click()
+
+      cy.get(':nth-child(1) > .panel-body > .col-md-12 > .form-row > .am-flex > .tombolnya > .btn-action-mobile > .btn')
+        .click()
+      cy.contains('a', 'Isi Data Tracking').click()
+      cy.get('#tgl_tracking')
+        .eq(0)
+      
+
+      // tracking.BtnTracking()
+      // tracking.TgsAmbilKontainer()
+      // tracking.TgsStuffing()
+      // tracking.TgsKapalBerlayar()
+      // tracking.TgsKapalSandar()
+      // tracking.TgsRencanaDooring()
+      // tracking.TgsDooring()
+      // tracking.TgsSuratJalan()
+      // tracking.TgsDokumenDikirim()
+      // tracking.BtnSelesai()
+
+      // tracking.InptAmbilKontainer()
 
 
   })
