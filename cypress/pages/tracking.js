@@ -16,7 +16,7 @@ class tracking{
 
     isi_ambil_kontainer = ':nth-child(1) > .panel-body > .col-md-12 > .form-row > .am-flex > .tombolnya > .btn-action-mobile > .btn'
 
-    tanggal_tracking = 
+    // tanggal_tracking = 
 
 
     StsTrack(){
