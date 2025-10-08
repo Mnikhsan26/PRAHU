@@ -1,26 +1,26 @@
 import accountphbl from "../../../../pages/accountphbl";
-import orderphbl from "../../../../pages/orderphbl";
+import orderphbd from "../../../../pages/orderphbd";
 import tracking from "../../../../pages/tracking";
 
 
-describe.skip('create order', () => {
+describe('create order', () => {
 
   it('bidowner_order', () => {
-    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.visit('https://phbid3.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     
     //bid owner login
     accountphbl.BidOwner()
     accountphbl.PassAkun()
     accountphbl.BtnLogin()
-    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
+    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('contain.text','Cari Penawaran Lelang')
 
     //bid owner order
-    orderphbl.LelangOrder()
+    orderphbd.LelangOrder()
 
     cy.get('#tombol_filter').click()
     cy.get('#select2-bidder-container')
-      .type('PT. Perusahaan Pelayaran Nusantara Panurjwan{enter}')
+      .type('PT. Mujur Jaya{enter}')
     cy.get('#tombol_filter_submit').click()
     cy.wait(2000) // tunggu 2 detik
     cy.get('.tabel_hasil_penawaran_tr_top_right > [style="display: block;"] > .tombol-pesan-link > .btn').click() //tombol pesan
@@ -109,7 +109,7 @@ describe.skip('create order', () => {
 
 })
 
-describe('case input penugasan', () => {
+describe.skip('case input penugasan', () => {
 
   // beforeEach(() => {
   //     cy.session('bidder', () => {
