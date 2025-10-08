@@ -3,35 +3,37 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      // tambahkan plugin di sini kalau perlu
-    },
-    baseUrl: 'https://phbidlautdemo.prahu-hub.com', // opsional
-    specPattern: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}", // default pattern test
-  },
-});
+      // Ambil environment type dari CLI, default ke "devphbd"
+      const envType = config.env.envType || "devphbd";
 
-module.exports = {
-  e2e: {
-    setupNodeEvents(on, config) {
-      on('before:browser:launch', (browser = {}, launchOptions) => {
-        if (browser.name === 'chrome') {
-          launchOptions.args.push('--disable-features=VizDisplayCompositor');
-          launchOptions.args.push('--disable-web-security');
-          launchOptions.args.push('--disable-site-isolation-trials');
-        }
-        return launchOptions;
-      });
-    }
-  }
-};
+      // Daftar baseUrl untuk berbagai environment
+      const urls = {
+        devphbd: "https://phbid3.prahu-hub.com",
+        rcphbd: "https://phbiddaratrc.prahu-hub.com",
+        betaphbd: "https://phbiddaratdemo.prahu-hub.com",
+        devphbl: "https://phbidlautdev.prahu-hub.com",
+        rcphbl: "https://phbidlautrc.prahu-hub.com",
+        betaphbl: "https://phbidlautdemo.prahu-hub.com",
+      };
 
-module.exports = defineConfig({
-  e2e: {
-    setupNodeEvents(on, config) {
-      // event listener kalau ada
+      // Validasi: kalau envType tidak ditemukan, kasih peringatan
+      if (!urls[envType]) {
+        console.warn(`⚠️ Environment "${envType}" tidak dikenal. Gunakan salah satu dari:`);
+        console.table(urls);
+        throw new Error(`Environment "${envType}" tidak valid.`);
+      }
+
+      // Set baseUrl dinamis
+      config.baseUrl = urls[envType];
+
+      console.log(`✅ Base URL digunakan: ${config.baseUrl}`);
+      //cara menggunakan : npx cypress open --env envType=rcphbl
+
+      return config;
     },
-    // baseUrl: "http://localhost:3000", // opsional
-    viewportWidth: 1280,   // tambahkan ini
-    viewportHeight: 720,   // tambahkan ini
+
+    viewportWidth: 1280,
+    viewportHeight: 720,
+    specPattern: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
   },
 });

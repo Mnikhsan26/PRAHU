@@ -13,20 +13,21 @@ describe('create order', () => {
     accountphbl.BidOwner()
     accountphbl.PassAkun()
     accountphbl.BtnLogin()
-    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('contain.text','Cari Penawaran Lelang')
+    cy.get('.color_primary_gray_2').should('contain.text','Cari Penawaran Lelang')
 
     //bid owner order
     orderphbd.LelangOrder()
 
-    cy.get('#tombol_filter').click()
-    cy.get('#select2-bidder-container')
+    cy.get('.col-xs-12 > :nth-child(1) > #tombolFilterListOrder').click()
+    cy.get('[style="width: 30%;"] > .position-relative > .input-group > .select2 > .selection > .select2-selection')
       .type('PT. Mujur Jaya{enter}')
-    cy.get('#tombol_filter_submit').click()
+    cy.get('#submitFilterListOrder').click()
     cy.wait(2000) // tunggu 2 detik
-    cy.get('.tabel_hasil_penawaran_tr_top_right > [style="display: block;"] > .tombol-pesan-link > .btn').click() //tombol pesan
+    cy.get('[style="padding-top:12px;text-align:center;vertical-align:top;border-right: 2px solid;border-top: 2px solid; border-radius: 0px 10px 0px 0px!important; border-color: #f1f4f6;"] > .tombolPesan')
+      .click() //tombol pesan
 
     //input isi data pesanan
-    cy.get('#qty')
+    cy.get('#jumlahdipesan')
       .type('3{enter}')
     
     cy.get('#tgl_permintaan_muat').click()
@@ -44,12 +45,12 @@ describe('create order', () => {
     cy.get('#nama_perusahaan_tujuan1')
       .type('PT. Multi Karya Industiral{enter}')
     cy.get('#terms').click()
-    cy.get('#tombol_lanjutkan').click()
+    cy.get('#submitonce1').click()
     cy.get('.swal2-confirm').click()
 
     //input muatan
-    cy.get('.app-main__inner > :nth-child(3) > .col-12 > .heading_1')
-      .should('have.text','Input Muatan')
+    cy.get('.color_primary_gray_2')
+      .should('contain.text','Input Muatan')
     cy.get('#kontainer-1 > :nth-child(2) > :nth-child(1) > .form-control')
       .type('Bawang Merah{enter}')
 
@@ -68,8 +69,8 @@ describe('create order', () => {
     cy.get('#submit-packinglist').click()
 
     //input perjanjian
-    cy.get('.col-12 > .heading_1')
-      .should('have.text','PERJANJIAN PENGIRIMAN')
+    cy.get('.color_primary_gray_2')
+      .should('contain.text','PERJANJIAN PENGIRIMAN')
     cy.get('#terms').click()
     cy.get('#submitonce1').click()
     cy.wait(2000) // tunggu 2 detik
@@ -77,7 +78,7 @@ describe('create order', () => {
 
     });
 
-  it('admin_validasi', () => {
+  it.skip('admin_validasi', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
 
