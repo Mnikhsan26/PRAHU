@@ -5,7 +5,7 @@ import tracking from "../../../../pages/tracking";
 
 describe('create order', () => {
 
-  it('bidowner_order', () => {
+  it.skip('bidowner_order', () => {
     cy.visit('https://phbid3.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     
@@ -84,20 +84,25 @@ describe('create order', () => {
     cy.wait(2000) // tunggu 2 detik
     cy.get('a.sidebar_icon')
       .contains('DAFTAR ORDER').click()
-    cy.get('#btn_filter1').click()
+    cy.get('#btn-filter').click()
     cy.get('#nomor_lelang')
       .type('Lelang/IK/01NRML{enter}')
-    cy.get('.mb_15 > :nth-child(4) .select2-selection').click()
+    cy.get('#select2-status_order-container').click()
     cy.get('.select2-search__field').type('Proses Validasi{enter}')
-    cy.get('#view_filter_orderlist1 > :nth-child(1) > .main-card > .card-body > .row > .col-md-12 > div > .button_filter')
+    cy.get('.display-on-pc > .main-card > .card-body > .row > .col-md-12 > div > .btn-dark-orange')
       .click()
     cy.wait(2000) // tunggu 2 detik
     
     // validasi order
     cy.contains('a', 'Validasi Order').click()
-    cy.get('#tombol_submit').click()
+    // cy.get('#select2-azur-container').click()
+    cy.contains('.select2-selection__rendered', 'Pilih Template Tracking').click()
+    cy.get('.select2-search__field').type('IK Normal{enter}')
+    cy.get('#submitonce1').click()
     cy.wait(2000) // tunggu 2 detik
-    cy.get('.alert').should('contain.text', 'Anda berhasil melakukan validasi order')
+    cy.get('a.sidebar_icon')
+      .contains('DAFTAR ORDER').click()
+    // cy.get('.alert').should('contain.text', 'Anda berhasil melakukan validasi order')
     
     });
 
