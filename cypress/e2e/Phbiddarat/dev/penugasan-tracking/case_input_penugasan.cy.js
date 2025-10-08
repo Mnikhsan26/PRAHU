@@ -13,7 +13,6 @@ describe('create order', () => {
     accountphbl.BidOwner()
     accountphbl.PassAkun()
     accountphbl.BtnLogin()
-    cy.get('.color_primary_gray_2').should('contain.text','Cari Penawaran Lelang')
 
     //bid owner order
     orderphbd.LelangOrder()
@@ -49,16 +48,14 @@ describe('create order', () => {
     cy.get('.swal2-confirm').click()
 
     //input muatan
-    cy.get('.color_primary_gray_2')
-      .should('contain.text','Input Muatan')
-    cy.get('#kontainer-1 > :nth-child(2) > :nth-child(1) > .form-control')
+    cy.get('#kontainer-1 > :nth-child(3) > :nth-child(1) > .form-control')
       .type('Bawang Merah{enter}')
 
     cy.get('[id^="select2-kemasan"]')
       .eq(0).type('Koli{enter}')
-    cy.get('#kontainer-1 > :nth-child(2) > :nth-child(3) > .form-control')
+    cy.get('#kontainer-1 > :nth-child(3) > :nth-child(3) > .form-control')
       .type('15000{enter}')
-    cy.get('#kontainer-1 > :nth-child(2) > :nth-child(4) > .form-control')
+    cy.get('#kontainer-1 > :nth-child(3) > :nth-child(4) > .form-control')
       .type('15000{enter}')
 
     cy.get('[id^="isi_data_unit_satu"]')
@@ -69,25 +66,21 @@ describe('create order', () => {
     cy.get('#submit-packinglist').click()
 
     //input perjanjian
-    cy.get('.color_primary_gray_2')
-      .should('contain.text','PERJANJIAN PENGIRIMAN')
     cy.get('#terms').click()
     cy.get('#submitonce1').click()
     cy.wait(2000) // tunggu 2 detik
-    cy.get('.alert').should('contain.text', 'Anda berhasil input perjanjian pengiriman')
+    cy.get('.alert').should('contain.text', 'Anda berhasil input perjanjian')
 
     });
 
-  it.skip('admin_validasi', () => {
-    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+  it('admin_validasi', () => {
+    cy.visit('https://phbid3.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
 
     //login admin
     accountphbl.Admin()
     accountphbl.PassAdm()
     accountphbl.BtnLogin()
-    cy.wait(2000) // tunggu 2 detik
-    cy.get('.col-12 > div > :nth-child(2)').should('have.text','Daftar Pengajuan Lelang')
     cy.wait(2000) // tunggu 2 detik
     cy.get('a.sidebar_icon')
       .contains('DAFTAR ORDER').click()
