@@ -1,8 +1,7 @@
 describe('phbidlaut login', () => {
   it('Should use mock recaptcha', () => {
     cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
-    cy.mockRecaptcha()
-    
+        
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('.col-md-7 > .link_1').click()
     cy.get('.heading_1').should('have.text','REGISTRASI')

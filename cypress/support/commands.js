@@ -22,32 +22,6 @@
 import NmrLelangPhbl from "../pages/nmrlelangphbl"
 import accountphbl from "../pages/accountphbl"
 
-Cypress.Commands.add('mockRecaptcha', () => {
-  cy.window().then((win) => {
-    win.grecaptcha = {
-      ready: (cb) => cb(),
-      execute: () => Promise.resolve('mock-token-' + Date.now()),
-      render: () => 'mock-widget-id'
-    }
-  })
-})
-
-Cypress.Commands.add('solveRecaptcha', () => {
-  cy.window().then((win) => {
-    // Set token directly ke hidden field jika ada
-    const recaptchaInput = document.querySelector('[name="g-recaptcha-response"]')
-    if (recaptchaInput) {
-      recaptchaInput.value = 'mock-recaptcha-response'
-    }
-    
-    // Trigger event change
-    if (recaptchaInput) {
-      const event = new Event('change', { bubbles: true })
-      recaptchaInput.dispatchEvent(event)
-    }
-  })
-})
-
 
 Cypress.Commands.add('isiNomorLelang', (tipe = 'normal', selector = '#nomor_lelang') => {
   const nomor = NmrLelangPhbl.generate(tipe)
