@@ -13,6 +13,9 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+//untuk import atau upload file
+import 'cypress-file-upload';
+
 // Import commands.js using ES2015 syntax:
 import './commands'
 

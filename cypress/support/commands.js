@@ -19,6 +19,10 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+//untuk import atau upload file
+import 'cypress-file-upload'
+
 import NmrLelangPhbl from "../pages/nmrlelangphbl"
 import accountphbl from "../pages/accountphbl"
 
