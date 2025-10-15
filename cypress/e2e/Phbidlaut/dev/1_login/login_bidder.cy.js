@@ -3,7 +3,7 @@ import accountphbl from "../../../../pages/accountphbl";
 describe('phbidlaut login', () => {
   //Cek alert email
   it('login_mandatory_email', () => {
-    cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     accountphbl.BtnLogin()
     cy.get('.popover-body').should('have.text','Masukkan Email / No. Whatsapp')
@@ -12,9 +12,9 @@ describe('phbidlaut login', () => {
 
   //Cek alert kata sandi
   it('login_mandatory_katasandi', () => {
-    cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    accountphbl.BidOwner()
+    accountphbl.Bidder()
     accountphbl.BtnLogin()
     cy.get('.popover-body').should('have.text','Masukkan Password')
     cy.wait(2000) // tunggu 2 detik
@@ -22,17 +22,17 @@ describe('phbidlaut login', () => {
 
   //Cek login sukses email
   it('login_succes_email', () => {
-    cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    accountphbl.BidOwner()
+    accountphbl.Bidder()
     accountphbl.PassAkun()
     accountphbl.BtnLogin()
-    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
+    cy.get('.col-12 > div > :nth-child(2)').should('have.text','Daftar Pengajuan Lelang')
   });
 
   //Cek akun tidak terdaftar  
   it('login_uregistered_account', () => {
-    cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('emailtidakterdaftar@gmail.com')
     accountphbl.PassAkun()
@@ -42,9 +42,9 @@ describe('phbidlaut login', () => {
 
     //Cek kata sandi salah  
   it('login_invalid_password', () => {
-    cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    accountphbl.BidOwner()
+    accountphbl.Bidder()
     cy.get('#password').type('katasandisalah')
     accountphbl.BtnLogin()
     cy.get('.heading_1').should('have.text','LOGIN')
@@ -52,13 +52,12 @@ describe('phbidlaut login', () => {
 
     //Cek login sukses no whatsapp
   it('login_succes_ wa', () => {
-    cy.visit('https://phbidlautdemo.prahu-hub.com/user/login')
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    cy.get('#email').type('083830011881')
+    cy.get('#email').type('0851550708691')
     accountphbl.PassAkun()
     accountphbl.BtnLogin()
-    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
+    cy.get('.col-12 > div > :nth-child(2)').should('have.text','Daftar Pengajuan Lelang')
   });
-
 
 })
