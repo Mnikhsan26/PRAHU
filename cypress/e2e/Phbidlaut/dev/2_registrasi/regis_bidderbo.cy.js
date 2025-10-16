@@ -2,7 +2,7 @@ import RegisterPage from "../../../../pages/regisphbl"
 import { saveUser } from "../../../../support/utils/datahelper"
 import { loadUser } from "../../../../support/utils/datahelper"
 
-describe('case_registrasimandatory', () => {
+describe.skip('case_registrasimandatory', () => {
 
   it('case_alert_radiobutton', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')        
@@ -198,7 +198,7 @@ describe('case_registrasimandatory', () => {
 
 })
 
-describe.skip('case_registrasi', () => {
+describe('case_registrasi', () => {
 
   it('registrasibo_berhasil', () => {
     const page = new RegisterPage()
@@ -217,6 +217,12 @@ describe.skip('case_registrasi', () => {
     cy.get('#password').type('qwerty12345')
     cy.get('#password_ulang').type('qwerty12345')
     cy.get('#submitRegistrasi').click()
+    cy.wait(3000)
+
+    cy.get('.titleRegistrasi > .text_label_regular')
+      .should('have.text','KONFIRMASI EMAIL')
+    
+    cy.get('#vkey').click({ force: true }) //aktifkan akun
 
     saveUser('bidowner', { email, password: 'qwerty12345' })
     
@@ -239,6 +245,12 @@ describe.skip('case_registrasi', () => {
     cy.get('#password').type('qwerty12345')
     cy.get('#password_ulang').type('qwerty12345')
     cy.get('#submitRegistrasi').click()
+    cy.wait(3000)
+
+    cy.get('.titleRegistrasi > .text_label_regular')
+      .should('have.text','KONFIRMASI EMAIL')
+    
+    cy.get('#vkey').click({ force: true }) //aktifkan akun
 
     saveUser('bidder', { email, password: 'qwerty12345' })
     
@@ -246,7 +258,7 @@ describe.skip('case_registrasi', () => {
 
 })
 
-describe.skip('case_kelengkapanregistrasi', () => { // akfitkfan akun melalui email dahulu
+describe('case_kelengkapanregistrasi', () => { // akfitkfan akun melalui email dahulu
 
   it('kelengkapanregis_bidowner', () => {
     loadUser('bidowner').then((user) => {
