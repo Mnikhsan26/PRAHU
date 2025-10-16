@@ -1,6 +1,6 @@
 import accountphbl from "../../../../pages/accountphbl";
 
-describe('phbidlaut login', () => {
+describe('loginbo', () => {
   //Cek alert email
   it('login_mandatory_email', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
