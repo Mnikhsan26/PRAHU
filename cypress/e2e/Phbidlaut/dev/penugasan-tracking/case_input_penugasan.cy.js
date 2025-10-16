@@ -8,13 +8,11 @@ describe.skip('create order', () => {
   it('bidowner_order', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    
     //bid owner login
     accountphbl.BidOwner()
     accountphbl.PassAkun()
     accountphbl.BtnLogin()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
-
     //bid owner order
     orderphbl.LelangOrder()
 
@@ -23,7 +21,8 @@ describe.skip('create order', () => {
       .type('PT. Perusahaan Pelayaran Nusantara Panurjwan{enter}')
     cy.get('#tombol_filter_submit').click()
     cy.wait(2000) // tunggu 2 detik
-    cy.get('.tabel_hasil_penawaran_tr_top_right > [style="display: block;"] > .tombol-pesan-link > .btn').click() //tombol pesan
+    cy.get('.tabel_hasil_penawaran_tr_top_right > [style="display: block;"] > .tombol-pesan-link > .btn')
+      .click() //tombol pesan
 
     //input isi data pesanan
     cy.get('#qty')
@@ -74,13 +73,11 @@ describe.skip('create order', () => {
     cy.get('#submitonce1').click()
     cy.wait(2000) // tunggu 2 detik
     cy.get('.alert').should('contain.text', 'Anda berhasil input perjanjian pengiriman')
-
     });
 
   it('admin_validasi', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-
     //login admin
     accountphbl.Admin()
     accountphbl.PassAdm()
@@ -98,7 +95,6 @@ describe.skip('create order', () => {
     cy.get('#view_filter_orderlist1 > :nth-child(1) > .main-card > .card-body > .row > .col-md-12 > div > .button_filter')
       .click()
     cy.wait(2000) // tunggu 2 detik
-    
     // validasi order
     cy.contains('a', 'Validasi Order').click()
     cy.get('#tombol_submit').click()
@@ -207,7 +203,7 @@ describe('case input penugasan', () => {
 
   })
 
-    it('bidder_penugasan_isisemua', () => {
+  it('bidder_penugasan_isisemua', () => {
 
       cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
       cy.get('.heading_1').should('have.text','LOGIN')
@@ -232,9 +228,54 @@ describe('case input penugasan', () => {
       cy.get(':nth-child(1) > .panel-body > .col-md-12 > .form-row > .am-flex > .tombolnya > .btn-action-mobile > .btn')
         .click()
       cy.contains('a', 'Isi Data Tracking').click()
-      cy.get('#tgl_tracking')
-        .eq(0)
+      //unit 1
+      //input tanggal ambil kontainer
+      cy.get('#tgl_tracking0')
+        .clear()
+        .type('01/09/2025{enter}')
+        .should('have.value', '01/09/2025')
+      //input foto kontainer
+      cy.get('.dz-hidden-input').attachFile([
+                'tracking/ambil_kont1.jpg',
+                'tracking/ambil_kont2.jpg',
+                'tracking/ambil_kont3.jpg'
+            ]);
+      cy.get('#dropzonnya0 .dz-preview').should('have.length', 3)
+      //input keterangan
+      cy.get(':nth-child(1) > :nth-child(11) > .color_primary_gray_7 > .form-control')
+        .type('Ambil kontainer sudah selesai')
+
+      //unit 2
+      //input tanggal ambil kontainer
+      cy.get('#tgl_tracking1')
+        .clear()
+        .type('01/09/2025{enter}')
+        .should('have.value', '01/09/2025')
+      //input foto kontainer
+      cy.get('.dz-hidden-input').attachFile([
+                'tracking/ambil_kont1.jpg',
+                'tracking/ambil_kont2.jpg',
+                'tracking/ambil_kont3.jpg'
+            ]);
+      cy.get('#dropzonnya0 .dz-preview').should('have.length', 3)
+      //input keterangan
+      cy.get(':nth-child(1) > :nth-child(11) > .color_primary_gray_7 > .form-control')
+        .type('Ambil kontainer sudah selesai')
       
+      // cy.get('.dropzone').eq(0).find('.dz-hidden-input').attachFile([...]);
+      // cy.get('.dropzone').eq(0).find('.dz-preview').should('have.length', 3);
+
+      // cy.get('.dropzone').eq(1).find('.dz-hidden-input').attachFile([...]);
+      // cy.get('.dropzone').eq(1).find('.dz-preview').should('have.length', 3);
+
+
+
+
+
+      
+
+      // cy.get('#image-upload-logo').attachFile('registrasi/logo_bo.jpeg')
+ 
 
       // tracking.BtnTracking()
       // tracking.TgsAmbilKontainer()
