@@ -2,7 +2,7 @@ import RegisterPage from "../../../../pages/regisphbl"
 import { saveUser } from "../../../../support/utils/datahelper"
 import { loadUser } from "../../../../support/utils/datahelper"
 
-describe.skip('case_registrasimandatory', () => {
+describe('case_registrasimandatory', () => {
 
   it('case_alert_radiobutton', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')        
@@ -258,7 +258,277 @@ describe('case_registrasi', () => {
 
 })
 
-describe('case_kelengkapanregistrasi', () => { // akfitkfan akun melalui email dahulu
+describe('case_mandatoryklkpn_bo', () => {
+
+  it('mandatory_provinsi', () => {
+    loadUser('bidowner').then((user) => {
+      cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
+      cy.get('#submitLogin').click()  
+      cy.get('#submitRegistrasi').click()
+      cy.get('.popover-body').should('contain.text', 'Pilih Provinsi')
+      cy.wait(2000)
+    })
+  })
+
+  it('mandatory_kota', () => {
+    loadUser('bidowner').then((user) => {
+      cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
+      cy.get('#submitLogin').click()  
+      
+      cy.get('#span-province').click()
+        .type('DKI Jakarta{enter}')
+      cy.get('#submitRegistrasi').click()
+      cy.get('.popover-body').should('contain.text', 'Pilih Kota')
+      cy.wait(2000)
+    })
+  })
+
+  it('mandatory_alamat', () => {
+    loadUser('bidowner').then((user) => {
+      cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
+      cy.get('#submitLogin').click()  
+      
+      cy.get('#span-province').click()
+        .type('DKI Jakarta{enter}')
+      cy.get('#span-city1')
+        .type('Kota Jakarta Barat{enter}')
+      cy.get('#submitRegistrasi').click()
+      cy.get('.popover-body').should('contain.text', 'Masukkan Alamat Anda')
+      cy.wait(2000)
+    })
+  })
+
+  it('mandatory_telp', () => {
+    loadUser('bidowner').then((user) => {
+      cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
+      cy.get('#submitLogin').click()  
+      
+      cy.get('#span-province').click()
+        .type('DKI Jakarta{enter}')
+      cy.get('#span-city1')
+        .type('Kota Jakarta Barat{enter}')
+      cy.get('#alamat')
+        .type('Jalan Kalianak 57a')
+      cy.get('#no_telp1').clear()
+      cy.get('#submitRegistrasi').click()
+      cy.get('.popover-body').should('contain.text', 'Masukkan No. Telepon / Whatsapp')
+      cy.wait(2000)
+    })
+  })
+
+  it('mandatory_identitas', () => {
+    loadUser('bidowner').then((user) => {
+      cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
+      cy.get('#submitLogin').click()  
+      
+      cy.get('#span-province').click()
+        .type('DKI Jakarta{enter}')
+      cy.get('#span-city1')
+        .type('Kota Jakarta Barat{enter}')
+      cy.get('#alamat')
+        .type('Jalan Kalianak 57a')
+      cy.get('#submitRegistrasi').click()
+      cy.get('.popover-body').should('contain.text', 'Masukkan Identitas')
+      cy.wait(2000)
+    })
+  })
+
+  it('mandatory_logo', () => {
+    loadUser('bidowner').then((user) => {
+      cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
+      cy.get('#submitLogin').click()  
+      
+      cy.get('#span-province').click()
+        .type('DKI Jakarta{enter}')
+      cy.get('#span-city1')
+        .type('Kota Jakarta Barat{enter}')
+      cy.get('#alamat')
+        .type('Jalan Kalianak 57a')
+      //upload ktp
+      cy.get('#image-upload-ktp').attachFile('registrasi/file_ktp.jpg')
+      cy.get('#fileKTP').should('have.value', 'file_ktp.jpg')
+      cy.get('#submitRegistrasi').click()
+      cy.get('.popover-body').should('contain.text', 'Masukkan Logo Perusahaan')
+      cy.wait(2000)
+    })
+  })
+
+})
+
+describe('case_mandatoryklkpn_bidder', () => {
+
+  it('mandatory_provinsi', () => {
+    loadUser('bidder').then((user) => {
+      cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
+      cy.get('#submitLogin').click()  
+      cy.get('#submitRegistrasi').click()
+      cy.get('.popover-body').should('contain.text', 'Pilih Provinsi')
+      cy.wait(2000)
+    })
+  })
+
+  it('mandatory_kota', () => {
+    loadUser('bidder').then((user) => {
+      cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
+      cy.get('#submitLogin').click()  
+      
+      cy.get('#span-province').click()
+        .type('DKI Jakarta{enter}')
+      cy.get('#submitRegistrasi').click()
+      cy.get('.popover-body').should('contain.text', 'Pilih Kota')
+      cy.wait(2000)
+    })
+  })
+
+  it('mandatory_alamat', () => {
+    loadUser('bidder').then((user) => {
+      cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
+      cy.get('#submitLogin').click()  
+      
+      cy.get('#span-province').click()
+        .type('DKI Jakarta{enter}')
+      cy.get('#span-city1')
+        .type('Kota Jakarta Barat{enter}')
+      cy.get('#submitRegistrasi').click()
+      cy.get('.popover-body').should('contain.text', 'Masukkan Alamat Anda')
+      cy.wait(2000)
+    })
+  })
+
+  it('mandatory_telp', () => {
+    loadUser('bidder').then((user) => {
+      cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
+      cy.get('#submitLogin').click()  
+      
+      cy.get('#span-province').click()
+        .type('DKI Jakarta{enter}')
+      cy.get('#span-city1')
+        .type('Kota Jakarta Barat{enter}')
+      cy.get('#alamatKantor')
+        .type('Jalan Kalianak 57a')
+      cy.get('#noTelepon').clear()
+      cy.get('#submitRegistrasi').click()
+      cy.get('.popover-body').should('contain.text', 'Masukkan No. Telepon / Whatsapp')
+      cy.wait(2000)
+    })
+  })
+
+  it('mandatory_logo', () => {
+    loadUser('bidder').then((user) => {
+      cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
+      cy.get('#submitLogin').click()  
+      
+      cy.get('#span-province').click()
+        .type('DKI Jakarta{enter}')
+      cy.get('#span-city1')
+        .type('Kota Jakarta Barat{enter}')
+      cy.get('#alamatKantor')
+        .type('Jalan Kalianak 57a')
+      cy.get('#submitRegistrasi').click()
+      cy.get('.popover-body').should('contain.text', 'Masukkan Logo Perusahaan')
+      cy.wait(2000)
+    })
+  })
+
+  it('mandatory_bank', () => {
+    loadUser('bidder').then((user) => {
+      cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
+      cy.get('#submitLogin').click()  
+      
+      cy.get('#span-province').click()
+        .type('DKI Jakarta{enter}')
+      cy.get('#span-city1')
+        .type('Kota Jakarta Barat{enter}')
+      cy.get('#alamatKantor')
+        .type('Jalan Kalianak 57a')
+      //upload logo
+      cy.get('#btn-photo').attachFile('registrasi/logo_bidder.jpg')
+      cy.get('#photo').should('have.value', 'logo_bidder.jpg')
+      cy.get('#submitRegistrasi').click()
+      cy.get('.popover-body').should('contain.text', 'Pilih Bank')
+      cy.wait(2000)
+    })
+  })
+
+  it('mandatory_rekening', () => {
+    loadUser('bidder').then((user) => {
+      cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
+      cy.get('#submitLogin').click()  
+      
+      cy.get('#span-province').click()
+        .type('DKI Jakarta{enter}')
+      cy.get('#span-city1')
+        .type('Kota Jakarta Barat{enter}')
+      cy.get('#alamatKantor')
+        .type('Jalan Kalianak 57a')
+      //upload logo
+      cy.get('#btn-photo').attachFile('registrasi/logo_bidder.jpg')
+      cy.get('#photo').should('have.value', 'logo_bidder.jpg')
+
+      cy.get('.spanmasterbank_dataID-1')
+        .type('BCA{enter}')
+      cy.get('#submitRegistrasi').click()
+      cy.get('.popover-body').should('contain.text', 'Masukkan Nomor Rekening')
+      cy.wait(2000)
+    })
+  })
+
+  it('mandatory_namarekening', () => {
+    loadUser('bidder').then((user) => {
+      cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+      cy.get('#email').type(user.email)
+      cy.get('#password').type(user.password)
+      cy.get('#submitLogin').click()  
+      
+      cy.get('#span-province').click()
+        .type('DKI Jakarta{enter}')
+      cy.get('#span-city1')
+        .type('Kota Jakarta Barat{enter}')
+      cy.get('#alamatKantor')
+        .type('Jalan Kalianak 57a')
+      //upload logo
+      cy.get('#btn-photo').attachFile('registrasi/logo_bidder.jpg')
+      cy.get('#photo').should('have.value', 'logo_bidder.jpg')
+
+      cy.get('.spanmasterbank_dataID-1')
+        .type('BCA{enter}')
+      cy.get('#nomor_rekening')
+        .type('7642720001')
+      cy.get('#submitRegistrasi').click()
+      cy.get('.popover-body').should('contain.text', 'Masukkan Nama Rekening')
+      cy.wait(2000)
+    })
+  })
+
+})
+
+describe('case_kelengkapanregistrasi', () => {
 
   it('kelengkapanregis_bidowner', () => {
     loadUser('bidowner').then((user) => {
