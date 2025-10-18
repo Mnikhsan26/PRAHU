@@ -1,4 +1,4 @@
-import RegisterPage from "../../../../pages/regisphbl"
+import RegisterPage from "../../../../pages/phbl/regisphbl"
 import { saveUser } from "../../../../support/utils/datahelper"
 import { loadUser } from "../../../../support/utils/datahelper"
 
