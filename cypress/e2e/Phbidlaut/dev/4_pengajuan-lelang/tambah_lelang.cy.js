@@ -17,7 +17,6 @@ describe('phbidlaut login', () => {
     
     const lelang = new FormLelang ()
     const dates = LlgBlmBk.generateBlmbuka ()
-    
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
       .type(dates.buka + '{enter}')
@@ -105,14 +104,15 @@ describe('phbidlaut login', () => {
   it.skip('tambah_lelang_normal_dbuka', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    cy.get('#email').type('pengirim.ph2021@gmail.com')
-    cy.get('#password').type('qwerty12345')
-    cy.get('#submitLogin').click()
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
     cy.isiNomorLelang('NRML')
     // cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#3')
     
+    const lelang = new FormLelang ()    
     const dates = LlgTtp.generateTutup ()
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
@@ -148,8 +148,8 @@ describe('phbidlaut login', () => {
     cy.get('#biaya_lainnya_all').click()
 
     // sk
-    cy.get('#harga_telah_termasuk').type('Kawalan Asal & Kawalan Tujuan')
-    cy.get('#harga_belum_termasuk').type('Forklift')
+    lelang.HrgTrmsk.type('Kawalan Asal & Kawalan Tujuan')
+    lelang.HrgTdkTrmsk.type('Forklift')
 
     //dokumen penagihan
     cy.get('#dok_penagihan_all').click()
@@ -199,14 +199,15 @@ describe('phbidlaut login', () => {
   it.skip('tambah_lelang_Normal_mulaikirim', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    cy.get('#email').type('pengirim.ph2021@gmail.com')
-    cy.get('#password').type('qwerty12345')
-    cy.get('#submitLogin').click()
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
     cy.isiNomorLelang('NRML')
     // cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#3')
-    
+
+    const lelang = new FormLelang ()    
     const dates = LlgMlai.generateMulai ()
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
@@ -242,8 +243,8 @@ describe('phbidlaut login', () => {
     cy.get('#biaya_lainnya_all').click()
 
     // sk
-    cy.get('#harga_telah_termasuk').type('Kawalan Asal & Kawalan Tujuan')
-    cy.get('#harga_belum_termasuk').type('Forklift')
+    lelang.HrgTrmsk.type('Kawalan Asal & Kawalan Tujuan')
+    lelang.HrgTdkTrmsk.type('Forklift')
 
     //dokumen penagihan
     cy.get('#dok_penagihan_all').click()
@@ -293,14 +294,15 @@ describe('phbidlaut login', () => {
   it.skip('tambah_lelang_normal_akhirkirim', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    cy.get('#email').type('pengirim.ph2021@gmail.com')
-    cy.get('#password').type('qwerty12345')
-    cy.get('#submitLogin').click()
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
     cy.isiNomorLelang('NRML')
     // cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#3')
     
+    const lelang = new FormLelang ()    
     const dates = LlgAkhr.generateAkhir ()
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
@@ -336,8 +338,8 @@ describe('phbidlaut login', () => {
     cy.get('#biaya_lainnya_all').click()
 
     // sk
-    cy.get('#harga_telah_termasuk').type('Kawalan Asal & Kawalan Tujuan')
-    cy.get('#harga_belum_termasuk').type('Forklift')
+    lelang.HrgTrmsk.type('Kawalan Asal & Kawalan Tujuan')
+    lelang.HrgTdkTrmsk.type('Forklift')
 
     //dokumen penagihan
     cy.get('#dok_penagihan_all').click()
@@ -387,9 +389,9 @@ describe('phbidlaut login', () => {
   it.skip('lelang_normal_pilih_history', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    cy.get('#email').type('pengirim.ph2021@gmail.com')
-    cy.get('#password').type('qwerty12345')
-    cy.get('#submitLogin').click()
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
     cy.isiNomorLelang('NRML')
@@ -451,9 +453,9 @@ describe('phbidlaut login', () => {
   it.skip('tambah_lelang_normal_pilih_history', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    cy.get('#email').type('pengirim.ph2021@gmail.com')
-    cy.get('#password').type('qwerty12345')
-    cy.get('#submitLogin').click()
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
     cy.isiNomorLelang('NRML')
@@ -527,14 +529,15 @@ describe('phbidlaut login', () => {
   it.skip('tambah_lelang_md', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    cy.get('#email').type('pengirim.ph2021@gmail.com')
-    cy.get('#password').type('qwerty12345')
-    cy.get('#submitLogin').click()
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
     cy.isiNomorLelang('MLTD')
     // cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#5')
 
+    const lelang = new FormLelang ()    
     const dates = LlgAkhr.generateAkhir()
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
@@ -570,8 +573,8 @@ describe('phbidlaut login', () => {
     cy.get('#biaya_lainnya_all').click()
 
     // sk
-    cy.get('#harga_telah_termasuk').type('Kawalan Asal & Kawalan Tujuan')
-    cy.get('#harga_belum_termasuk').type('Forklift')
+    lelang.HrgTrmsk.type('Kawalan Asal & Kawalan Tujuan')
+    lelang.HrgTdkTrmsk.type('Forklift')
 
     //dokumen penagihan
     cy.get('#dok_penagihan_all').click()
@@ -648,14 +651,15 @@ describe('phbidlaut login', () => {
   it.skip('lelang_md_pilih_history', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    cy.get('#email').type('pengirim.ph2021@gmail.com')
-    cy.get('#password').type('qwerty12345')
-    cy.get('#submitLogin').click()
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
     cy.isiNomorLelang('MLTD')
     // cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#6')
     
+    const lelang = new FormLelang ()    
     const dates = LlgAkhr.generateAkhir()
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
@@ -713,14 +717,15 @@ describe('phbidlaut login', () => {
   it.skip('tambah_lelang_md_pilih_history', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    cy.get('#email').type('pengirim.ph2021@gmail.com')
-    cy.get('#password').type('qwerty12345')
-    cy.get('#submitLogin').click()
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
     cy.isiNomorLelang('MLTD')
     // cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#6')
     
+    const lelang = new FormLelang ()    
     const dates = LlgAkhr.generateAkhir()
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
