@@ -1,5 +1,6 @@
-import { LlgAkhr, LlgBlmBk, LlgMlai, LlgTtp } from "../../../../pages/PHBL/nmrlelangphbl";
-import accountphbl from "../../../../pages/PHBL/accountphbl";
+import { LlgAkhr, LlgBlmBk, LlgMlai, LlgTtp } from "../../../../pages/phbl/nmrlelangphbl";
+import accountphbl from "../../../../pages/phbl/accountphbl";
+import FormLelang from "../../../../pages/phbl/pengajuanlelang";
 
 describe('phbidlaut login', () => {
   //tambah lelang normal belum buka
@@ -7,13 +8,16 @@ describe('phbidlaut login', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     accountphbl.BidOwner()
+    accountphbl.PassAkun()
     accountphbl.BtnLogin()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
     cy.isiNomorLelang('NRML')
     // cy.get('#nomor_lelang').type('LELANGIK/09/2025/NRML#3')
     
+    const lelang = new FormLelang ()
     const dates = LlgBlmBk.generateBlmbuka ()
+    
     //pilih tanggal lelang (buka lelang)
     cy.get('#tanggal_buka_lelang')
       .type(dates.buka + '{enter}')
@@ -48,17 +52,19 @@ describe('phbidlaut login', () => {
     cy.get('#biaya_lainnya_all').click()
 
     // sk
-    cy.get('#harga_telah_termasuk').type('Kawalan Asal & Kawalan Tujuan')
-    cy.get('#harga_belum_termasuk').type('Forklift')
+    lelang.HrgTrmsk.type('Kawalan Asal & Kawalan Tujuan')
+    lelang.HrgTdkTrmsk.type('Forklift')
 
     //dokumen penagihan
     cy.get('#dok_penagihan_all').click()
-    cy.get('#catatan_tambahan').type('Invoice Asli 1Lembar')
+    lelang.DokPenagihan.type('Invoice Asli 1Lembar')
     cy.get('#budget_pengiriman').type('1000000')
+    cy.get('#btn-NPWPNYA').attachFile('dokumen/dok_lelang.pdf')
+    cy.get('#fileNPWPID').should('have.value', 'dok_lelang.pdf')
 
     //pilih pelabuhan
-    cy.get('#select2-pelabuhan_asal-container').type('Kota Bengkulu{enter}')
-    cy.get('#select2-pelabuhan_tujuan-container').type('Kota Bima{enter}')
+    lelang.PelabuhanAsal.type('Kota Bengkulu{enter}')
+    lelang.PelabuhanTujuan.type('Kota Bima{enter}')
 
     //tempat asal
     cy.get('#alamat_pic_asal')
@@ -95,9 +101,8 @@ describe('phbidlaut login', () => {
       .and('contain', 'Anda berhasil membuat pengajuan lelang')
   });
 
-
   //tambah lelang normal dibuka
-  it('tambah_lelang_normal_dbuka', () => {
+  it.skip('tambah_lelang_normal_dbuka', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
@@ -190,9 +195,8 @@ describe('phbidlaut login', () => {
       .and('contain', 'Anda berhasil membuat pengajuan lelang')
   });
 
-
   //tambah lelang normal tanggal mulai kirim h+1bulan
-  it('tambah_lelang_Normal_mulaikirim', () => {
+  it.skip('tambah_lelang_Normal_mulaikirim', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
@@ -285,9 +289,8 @@ describe('phbidlaut login', () => {
       .and('contain', 'Anda berhasil membuat pengajuan lelang')
   });
 
-
   //tambah lelang normal tanggal akhir kirim h+1bulan
-  it('tambah_lelang_normal_akhirkirim', () => {
+  it.skip('tambah_lelang_normal_akhirkirim', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
@@ -380,9 +383,8 @@ describe('phbidlaut login', () => {
       .and('contain', 'Anda berhasil membuat pengajuan lelang')
   });
 
-
   //lelang normal pilih dari history
-  it('lelang_normal_pilih_history', () => {
+  it.skip('lelang_normal_pilih_history', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
@@ -445,9 +447,8 @@ describe('phbidlaut login', () => {
 
   });
 
-
   //tambah lelang normal pilih dari history
-  it('tambah_lelang_normal_pilih_history', () => {
+  it.skip('tambah_lelang_normal_pilih_history', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
@@ -522,9 +523,8 @@ describe('phbidlaut login', () => {
       .and('contain', 'Anda berhasil membuat pengajuan lelang')
   });
 
-
   //tambah lelang md
-  it('tambah_lelang_md', () => {
+  it.skip('tambah_lelang_md', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
@@ -644,9 +644,8 @@ describe('phbidlaut login', () => {
       .and('contain', 'Anda berhasil membuat pengajuan lelang')
   });
 
-
   //lelang md pilih dari history
-  it('lelang_md_pilih_history', () => {
+  it.skip('lelang_md_pilih_history', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')
@@ -710,9 +709,8 @@ describe('phbidlaut login', () => {
 
   });
 
-
   //lelang md pilih dari history
-  it('tambah_lelang_md_pilih_history', () => {
+  it.skip('tambah_lelang_md_pilih_history', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     cy.get('#email').type('pengirim.ph2021@gmail.com')

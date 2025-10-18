@@ -23,8 +23,8 @@
 //untuk import atau upload file
 import 'cypress-file-upload'
 
-import NmrLelangPhbl from "../pages/nmrlelangphbl"
-import accountphbl from "../pages/accountphbl"
+import NmrLelangPhbl from '../pages/phbl/nmrlelangphbl'
+import accountphbl from '../pages/phbl/accountphbl'
 
 
 Cypress.Commands.add('isiNomorLelang', (tipe = 'normal', selector = '#nomor_lelang') => {
