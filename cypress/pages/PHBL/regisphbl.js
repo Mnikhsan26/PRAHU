@@ -1,4 +1,4 @@
-import UserDataGenerator from '../support/utils/UserDataGenerator'
+import UserDataGenerator from '../../support/utils/UserDataGenerator'
 
 class RegisterPage {
   inputEmail(role = 'owner') {

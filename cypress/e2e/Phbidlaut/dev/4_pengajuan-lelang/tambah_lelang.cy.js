@@ -1,13 +1,13 @@
-import { LlgAkhr, LlgBlmBk, LlgMlai, LlgTtp } from "../../../../pages/nmrlelangphbl";
+import { LlgAkhr, LlgBlmBk, LlgMlai, LlgTtp } from "../../../../pages/PHBL/nmrlelangphbl";
+import accountphbl from "../../../../pages/PHBL/accountphbl";
 
 describe('phbidlaut login', () => {
   //tambah lelang normal belum buka
   it('tambah_lelang_normal_blmbuka', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    cy.get('#email').type('pengirim.ph2021@gmail.com')
-    cy.get('#password').type('qwerty12345')
-    cy.get('#submitLogin').click()
+    accountphbl.BidOwner()
+    accountphbl.BtnLogin()
     cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
     cy.get('.link_1').click()
     cy.isiNomorLelang('NRML')
