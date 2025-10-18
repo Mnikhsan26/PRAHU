@@ -3,8 +3,83 @@ import accountphbl from "../../../../pages/phbl/accountphbl";
 import FormLelang from "../../../../pages/phbl/pengajuanlelang";
 
 describe('phbidlaut login', () => {
+  
+  it.skip('mandatory_nomor_lelang', () => {
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.get('.heading_1').should('have.text','LOGIN')
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
+    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
+    cy.get('.link_1').click()
+    
+    cy.get('#tombol_lanjutkan').click()
+    cy.get('.popover-body').should('have.text','Masukkan Nomor Lelang')
+  });
+
+  it.skip('mandatory_tanggal_buka', () => {
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.get('.heading_1').should('have.text','LOGIN')
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
+    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
+    cy.get('.link_1').click()
+    cy.isiNomorLelang('NRML')
+
+    cy.get('#tombol_lanjutkan').click()
+    cy.get('.popover-body').should('have.text','Masukkan Tanggal Buka Lelang')
+  });
+
+  it.skip('mandatory_tanggal_tutup', () => {
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.get('.heading_1').should('have.text','LOGIN')
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
+    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
+    cy.get('.link_1').click()
+    cy.isiNomorLelang('NRML')
+
+    const dates = LlgBlmBk.generateBlmbuka ()
+    //pilih tanggal lelang (buka lelang)
+    cy.get('#tanggal_buka_lelang')
+      .type(dates.buka + '{enter}')
+      .should('have.value', dates.buka)
+
+    cy.get('#tombol_lanjutkan').click()
+    cy.get('.popover-body').should('have.text','Masukkan Tanggal Tutup Lelang')
+  });
+
+  it('mandatory_tanggal_tutup', () => {
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.get('.heading_1').should('have.text','LOGIN')
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
+    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
+    cy.get('.link_1').click()
+    cy.isiNomorLelang('NRML')
+
+    const dates = LlgBlmBk.generateBlmbuka ()
+    //pilih tanggal lelang (buka lelang)
+    cy.get('#tanggal_buka_lelang')
+      .type(dates.buka + '{enter}')
+      .should('have.value', dates.buka)
+
+    //pilih tanggal lelang (tutup lelang)  
+    cy.get('#tanggal_tutup_lelang')
+      .type(dates.tutup + '{enter}')
+      .should('have.value', dates.tutup)
+    
+
+    cy.get('#tombol_lanjutkan').click()
+    cy.get('.popover-body').should('have.text','Masukkan Tgl Rencana Mulai Kirim')
+  });
+
+  
   //tambah lelang normal belum buka
-  it('tambah_lelang_normal_blmbuka', () => {
+  it.skip('tambah_lelang_normal_blmbuka', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     accountphbl.BidOwner()
