@@ -51,7 +51,7 @@ describe('phbidlaut login', () => {
     cy.get('.popover-body').should('have.text','Masukkan Tanggal Tutup Lelang')
   });
 
-  it('mandatory_tanggal_tutup', () => {
+  it.skip('mandatory_tanggal_mulai_kirim', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     accountphbl.BidOwner()
@@ -76,6 +76,293 @@ describe('phbidlaut login', () => {
     cy.get('#tombol_lanjutkan').click()
     cy.get('.popover-body').should('have.text','Masukkan Tgl Rencana Mulai Kirim')
   });
+
+  it.skip('mandatory_tanggal_akhir_kirim', () => {
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.get('.heading_1').should('have.text','LOGIN')
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
+    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
+    cy.get('.link_1').click()
+    cy.isiNomorLelang('NRML')
+
+    const dates = LlgBlmBk.generateBlmbuka ()
+    //pilih tanggal lelang (buka lelang)
+    cy.get('#tanggal_buka_lelang')
+      .type(dates.buka + '{enter}')
+      .should('have.value', dates.buka)
+
+    //pilih tanggal lelang (tutup lelang)  
+    cy.get('#tanggal_tutup_lelang')
+      .type(dates.tutup + '{enter}')
+      .should('have.value', dates.tutup)
+    
+    //pilih tanggal lelang (rencana mulai kirim)
+    cy.get('#tanggal_mulai_kontrak')
+    .type(dates.mulai + '{enter}')
+    .should('have.value', dates.mulai)
+    
+
+    cy.get('#tombol_lanjutkan').click()
+    cy.get('.popover-body').should('have.text','Masukkan Tgl Rencana Akhir Kirim')
+  });
+
+  it.skip('mandatory_pilih_data_lelang', () => {
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.get('.heading_1').should('have.text','LOGIN')
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
+    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
+    cy.get('.link_1').click()
+    cy.isiNomorLelang('NRML')
+
+    const dates = LlgBlmBk.generateBlmbuka ()
+    //pilih tanggal lelang (buka lelang)
+    cy.get('#tanggal_buka_lelang')
+      .type(dates.buka + '{enter}')
+      .should('have.value', dates.buka)
+
+    //pilih tanggal lelang (tutup lelang)  
+    cy.get('#tanggal_tutup_lelang')
+      .type(dates.tutup + '{enter}')
+      .should('have.value', dates.tutup)
+    
+    //pilih tanggal lelang (rencana mulai kirim)
+    cy.get('#tanggal_mulai_kontrak')
+    .type(dates.mulai + '{enter}')
+    .should('have.value', dates.mulai)
+
+    //pilih tanggal lelang (rencana akhir kirim)
+    cy.get('#tanggal_selesai_kontrak')
+      .type(dates.akhir + '{enter}')
+      .should('have.value', dates.akhir)
+
+    // cek history
+    cy.get('#gunakan_data_lelang_lama').click()
+    cy.get('#tgl_awal')
+      .clear()
+      .type('01/09/2025{enter}')
+      .should('have.value', '01/09/2025')
+    cy.wait(2000) // tunggu 2 detik
+
+    cy.get('#tgl_akhir')
+      .clear()
+      .type('30/11/2025{enter}')
+      .should('have.value', '30/11/2025')
+    cy.wait(2000) // tunggu 2 detik
+
+    cy.get('#lanjutcari').click()
+    
+    cy.get('#tombol_lanjutkan').click()
+    cy.get('.popover-body').should('have.text','Pilih Data Lelang')
+  });
+
+  it.skip('mandatory_pelabuhan_asal', () => {
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.get('.heading_1').should('have.text','LOGIN')
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
+    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
+    cy.get('.link_1').click()
+    cy.isiNomorLelang('NRML')
+
+    const dates = LlgBlmBk.generateBlmbuka ()
+    //pilih tanggal lelang (buka lelang)
+    cy.get('#tanggal_buka_lelang')
+      .type(dates.buka + '{enter}')
+      .should('have.value', dates.buka)
+
+    //pilih tanggal lelang (tutup lelang)  
+    cy.get('#tanggal_tutup_lelang')
+      .type(dates.tutup + '{enter}')
+      .should('have.value', dates.tutup)
+    
+    //pilih tanggal lelang (rencana mulai kirim)
+    cy.get('#tanggal_mulai_kontrak')
+      .type(dates.mulai + '{enter}')
+      .should('have.value', dates.mulai)
+    
+    //pilih tanggal lelang (rencana akhir kirim)
+    cy.get('#tanggal_selesai_kontrak')
+      .type(dates.akhir + '{enter}')
+      .should('have.value', dates.akhir)
+
+    cy.get('#tombol_lanjutkan').click()
+    cy.get('.popover-body').should('have.text','Pilih Pelabuhan Asal')
+  });
+  
+  it.skip('mandatory_pelabuhan_tujuan', () => {
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.get('.heading_1').should('have.text','LOGIN')
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
+    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
+    cy.get('.link_1').click()
+    cy.isiNomorLelang('NRML')
+
+    const lelang = new FormLelang ()
+    const dates = LlgBlmBk.generateBlmbuka ()
+    //pilih tanggal lelang (buka lelang)
+    cy.get('#tanggal_buka_lelang')
+      .type(dates.buka + '{enter}')
+      .should('have.value', dates.buka)
+
+    //pilih tanggal lelang (tutup lelang)  
+    cy.get('#tanggal_tutup_lelang')
+      .type(dates.tutup + '{enter}')
+      .should('have.value', dates.tutup)
+    
+    //pilih tanggal lelang (rencana mulai kirim)
+    cy.get('#tanggal_mulai_kontrak')
+      .type(dates.mulai + '{enter}')
+      .should('have.value', dates.mulai)
+    
+    //pilih tanggal lelang (rencana akhir kirim)
+    cy.get('#tanggal_selesai_kontrak')
+      .type(dates.akhir + '{enter}')
+      .should('have.value', dates.akhir)
+
+    //pilih pelabuhan
+    lelang.PelabuhanAsal.type('Kota Bengkulu{enter}')
+
+    cy.get('#tombol_lanjutkan').click()
+    cy.get('.popover-body').should('have.text','Pilih Pelabuhan Tujuan')
+  });
+
+  it.skip('mandatory_alamat_asal', () => {
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.get('.heading_1').should('have.text','LOGIN')
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
+    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
+    cy.get('.link_1').click()
+    cy.isiNomorLelang('NRML')
+
+    const lelang = new FormLelang ()
+    const dates = LlgBlmBk.generateBlmbuka ()
+    //pilih tanggal lelang (buka lelang)
+    cy.get('#tanggal_buka_lelang')
+      .type(dates.buka + '{enter}')
+      .should('have.value', dates.buka)
+
+    //pilih tanggal lelang (tutup lelang)  
+    cy.get('#tanggal_tutup_lelang')
+      .type(dates.tutup + '{enter}')
+      .should('have.value', dates.tutup)
+    
+    //pilih tanggal lelang (rencana mulai kirim)
+    cy.get('#tanggal_mulai_kontrak')
+      .type(dates.mulai + '{enter}')
+      .should('have.value', dates.mulai)
+    
+    //pilih tanggal lelang (rencana akhir kirim)
+    cy.get('#tanggal_selesai_kontrak')
+      .type(dates.akhir + '{enter}')
+      .should('have.value', dates.akhir)
+
+    //pilih pelabuhan
+    lelang.PelabuhanAsal.type('Kota Bengkulu{enter}')
+    lelang.PelabuhanTujuan.type('Kota Bima{enter}')    
+
+    cy.get('#tombol_lanjutkan').click()
+    cy.get('.popover-body').should('have.text','Masukkan Alamat Lengkap Asal')
+  });
+
+  it.skip('mandatory_kota_asal', () => {
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.get('.heading_1').should('have.text','LOGIN')
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
+    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
+    cy.get('.link_1').click()
+    cy.isiNomorLelang('NRML')
+
+    const lelang = new FormLelang ()
+    const dates = LlgBlmBk.generateBlmbuka ()
+    //pilih tanggal lelang (buka lelang)
+    cy.get('#tanggal_buka_lelang')
+      .type(dates.buka + '{enter}')
+      .should('have.value', dates.buka)
+
+    //pilih tanggal lelang (tutup lelang)  
+    cy.get('#tanggal_tutup_lelang')
+      .type(dates.tutup + '{enter}')
+      .should('have.value', dates.tutup)
+    
+    //pilih tanggal lelang (rencana mulai kirim)
+    cy.get('#tanggal_mulai_kontrak')
+      .type(dates.mulai + '{enter}')
+      .should('have.value', dates.mulai)
+    
+    //pilih tanggal lelang (rencana akhir kirim)
+    cy.get('#tanggal_selesai_kontrak')
+      .type(dates.akhir + '{enter}')
+      .should('have.value', dates.akhir)
+
+    //pilih pelabuhan
+    lelang.PelabuhanAsal.type('Kota Bengkulu{enter}')
+    lelang.PelabuhanTujuan.type('Kota Bima{enter}')
+
+    //tempat asal
+    cy.get('#alamat_pic_asal')
+    .type('Jl. Rajawali No.109, Kemayoran, Kec. Krembangan, Surabaya, Jawa Timur 60176')    
+
+    cy.get('#tombol_lanjutkan').click()
+    cy.get('.popover-body').should('have.text','Pilih Kota Asal')
+  });
+
+  it('mandatory_alamat_tujuan', () => {
+    cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
+    cy.get('.heading_1').should('have.text','LOGIN')
+    accountphbl.BidOwner()
+    accountphbl.PassAkun()
+    accountphbl.BtnLogin()
+    cy.get('.mb_20 > .col-12 > div > :nth-child(2)').should('have.text','Cari Penawaran Lelang')
+    cy.get('.link_1').click()
+    cy.isiNomorLelang('NRML')
+
+    const lelang = new FormLelang ()
+    const dates = LlgBlmBk.generateBlmbuka ()
+    //pilih tanggal lelang (buka lelang)
+    cy.get('#tanggal_buka_lelang')
+      .type(dates.buka + '{enter}')
+      .should('have.value', dates.buka)
+
+    //pilih tanggal lelang (tutup lelang)  
+    cy.get('#tanggal_tutup_lelang')
+      .type(dates.tutup + '{enter}')
+      .should('have.value', dates.tutup)
+    
+    //pilih tanggal lelang (rencana mulai kirim)
+    cy.get('#tanggal_mulai_kontrak')
+      .type(dates.mulai + '{enter}')
+      .should('have.value', dates.mulai)
+    
+    //pilih tanggal lelang (rencana akhir kirim)
+    cy.get('#tanggal_selesai_kontrak')
+      .type(dates.akhir + '{enter}')
+      .should('have.value', dates.akhir)
+
+    //pilih pelabuhan
+    lelang.PelabuhanAsal.type('Kota Bengkulu{enter}')
+    lelang.PelabuhanTujuan.type('Kota Bima{enter}')
+
+    //tempat asal
+    cy.get('#alamat_pic_asal')
+    .type('Jl. Rajawali No.109, Kemayoran, Kec. Krembangan, Surabaya, Jawa Timur 60176')    
+    cy.get('#select2-id_kota_asal-container').type('Kab. Bungo{enter}')
+
+
+    cy.get('#tombol_lanjutkan').click()
+    cy.get('.popover-body').should('have.text','Masukkan Alamat Lengkap Tujuan')
+  });  
+
 
   
   //tambah lelang normal belum buka
