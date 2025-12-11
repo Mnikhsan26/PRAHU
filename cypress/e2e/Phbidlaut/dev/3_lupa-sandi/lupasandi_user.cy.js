@@ -1,4 +1,4 @@
-import lupasandi from "../../../../pages/lupasandi"
+import lupasandi from "../../../../pages/phbl/lupasandi"
 
 describe('case_lupasandi', () => {
 
