@@ -317,7 +317,7 @@ describe('phbidlaut login', () => {
     cy.get('.popover-body').should('have.text','Pilih Kota Asal')
   });
 
-  it('mandatory_alamat_tujuan', () => {
+  it.skip('mandatory_alamat_tujuan', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     accountphbl.BidOwner()
@@ -366,7 +366,7 @@ describe('phbidlaut login', () => {
 
   
   //tambah lelang normal belum buka
-  it.skip('tambah_lelang_normal_blmbuka', () => {
+  it('tambah_lelang_normal_blmbuka', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     accountphbl.BidOwner()
@@ -463,7 +463,7 @@ describe('phbidlaut login', () => {
   });
 
   //tambah lelang normal dibuka
-  it.skip('tambah_lelang_normal_dbuka', () => {
+  it('tambah_lelang_normal_dbuka', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     accountphbl.BidOwner()
@@ -558,7 +558,7 @@ describe('phbidlaut login', () => {
   });
 
   //tambah lelang normal tanggal mulai kirim h+1bulan
-  it.skip('tambah_lelang_Normal_mulaikirim', () => {
+  it('tambah_lelang_Normal_mulaikirim', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     accountphbl.BidOwner()
@@ -653,7 +653,7 @@ describe('phbidlaut login', () => {
   });
 
   //tambah lelang normal tanggal akhir kirim h+1bulan
-  it.skip('tambah_lelang_normal_akhirkirim', () => {
+  it('tambah_lelang_normal_akhirkirim', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     accountphbl.BidOwner()
@@ -748,7 +748,7 @@ describe('phbidlaut login', () => {
   });
 
   //lelang normal pilih dari history
-  it.skip('lelang_normal_pilih_history', () => {
+  it('lelang_normal_pilih_history', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     accountphbl.BidOwner()
@@ -812,7 +812,7 @@ describe('phbidlaut login', () => {
   });
 
   //tambah lelang normal pilih dari history
-  it.skip('tambah_lelang_normal_pilih_history', () => {
+  it('tambah_lelang_normal_pilih_history', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     accountphbl.BidOwner()
@@ -888,7 +888,7 @@ describe('phbidlaut login', () => {
   });
 
   //tambah lelang md
-  it.skip('tambah_lelang_md', () => {
+  it('tambah_lelang_md', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     accountphbl.BidOwner()
@@ -1010,7 +1010,7 @@ describe('phbidlaut login', () => {
   });
 
   //lelang md pilih dari history
-  it.skip('lelang_md_pilih_history', () => {
+  it('lelang_md_pilih_history', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     accountphbl.BidOwner()
@@ -1076,7 +1076,7 @@ describe('phbidlaut login', () => {
   });
 
   //lelang md pilih dari history
-  it.skip('tambah_lelang_md_pilih_history', () => {
+  it('tambah_lelang_md_pilih_history', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
     accountphbl.BidOwner()

@@ -1,5 +1,5 @@
-import accountphbl from "../../../../../pages/phbl/accountphbl";
-import orderphbl from "../../../../../pages/phbl/orderphbl";
+import accountphbl from "../../../../pages/phbl/accountphbl";
+import orderphbl from "../../../../pages/phbl/orderphbl";
 
 
 describe('case input unit', () => {
