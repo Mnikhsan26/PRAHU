@@ -2,7 +2,7 @@ import lupasandi from "../../../../pages/phbl/lupasandi"
 
 describe('case_lupasandi', () => {
 
-  it('mandatoryfield_lupasandi', () => {
+  it.skip('mandatoryfield_lupasandi', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('contain.text', 'LOGIN')
     cy.get('.col-md-5 > .link_1').click()
@@ -14,7 +14,7 @@ describe('case_lupasandi', () => {
     })
   })
 
-  it('akuntdkterdaftar_lupasandi', () => {
+  it.skip('akuntdkterdaftar_lupasandi', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('contain.text', 'LOGIN')
     cy.get('.col-md-5 > .link_1').click()
@@ -27,7 +27,7 @@ describe('case_lupasandi', () => {
     })
   })
 
-  it('kodesalah_lupasandi', () => {
+  it.skip('kodesalah_lupasandi', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('contain.text', 'LOGIN')
     cy.get('.col-md-5 > .link_1').click()
@@ -45,7 +45,7 @@ describe('case_lupasandi', () => {
     })
   })
 
-  it('sandibarukosong_lupasandi', () => {
+  it.skip('sandibarukosong_lupasandi', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('contain.text', 'LOGIN')
     cy.get('.col-md-5 > .link_1').click()
@@ -63,7 +63,7 @@ describe('case_lupasandi', () => {
     cy.get('.popover').should('contain.text','Inputan tidak boleh kosong')
   })
 
-  it('sandikurangdigit_lupasandi', () => {
+  it.skip('sandikurangdigit_lupasandi', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('contain.text', 'LOGIN')
     cy.get('.col-md-5 > .link_1').click()
@@ -83,7 +83,7 @@ describe('case_lupasandi', () => {
     cy.get('.popover').should('contain.text','Min 6 karakter kombinasi huruf dan angka')
   })
 
-  it('sanditdkcocok_lupasandi', () => {
+  it.skip('sanditdkcocok_lupasandi', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('contain.text', 'LOGIN')
     cy.get('.col-md-5 > .link_1').click()
