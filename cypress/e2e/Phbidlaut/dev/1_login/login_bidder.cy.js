@@ -1,4 +1,4 @@
-import accountphbl from "../../../../pages/accountphbl";
+import accountphbl from "../../../../pages/phbl/accountphbl";
 
 describe('loginbidder', () => {
   //Cek alert email
