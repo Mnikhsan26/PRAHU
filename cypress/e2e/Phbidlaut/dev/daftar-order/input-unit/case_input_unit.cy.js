@@ -22,9 +22,10 @@ describe('case input unit', () => {
       .type('PT. Perusahaan Pelayaran Nusantara Panurjwan{enter}')
     cy.get('#tombol_filter_submit').click()
     cy.wait(2000) // tunggu 2 detik
-    cy.get('.tabel_hasil_penawaran_tr_top_right > [style="display: block;"] > .tombol-pesan-link > .btn').click() //tombol pesan
+    cy.get('button.btn-dark-orange').first().click() //tombol pesan
 
     //input isi data pesanan
+    cy.wait(2000)
     cy.get('#qty')
       .type('3{enter}')
     
@@ -92,7 +93,7 @@ describe('case input unit', () => {
       .contains('DAFTAR ORDER').click()
     cy.get('#btn_filter1').click()
     cy.get('#nomor_lelang')
-      .type('Lelang/IK/01NRML{enter}')
+      .type('Lelang/IK/Otomasi{enter}')
     cy.get('.mb_15 > :nth-child(4) .select2-selection').click()
     cy.get('.select2-search__field').type('Proses Validasi{enter}')
     cy.get('#view_filter_orderlist1 > :nth-child(1) > .main-card > .card-body > .row > .col-md-12 > div > .button_filter')
@@ -122,7 +123,7 @@ describe('case input unit', () => {
       .contains('DAFTAR ORDER').click()
     cy.get('#btn_filter1').click()
     cy.get('#nomor_lelang')
-      .type('Lelang/IK/01NRML{enter}')
+      .type('Lelang/IK/Otomasi{enter}')
     cy.get('.mb_15 > :nth-child(3) .select2-selection').click()
     cy.get('.select2-search__field').type('Konfirmasi Unit{enter}')
     cy.get('#view_filter_orderlist1 > :nth-child(1) > .main-card > .card-body > .row > .col-md-12 > div > .button_filter')
@@ -195,7 +196,7 @@ describe('case lewati unit', () => {
       .type('PT. Perusahaan Pelayaran Nusantara Panurjwan{enter}')
     cy.get('#tombol_filter_submit').click()
     cy.wait(2000) // tunggu 2 detik
-    cy.get('.tabel_hasil_penawaran_tr_top_right > [style="display: block;"] > .tombol-pesan-link > .btn').click() //tombol pesan
+    cy.get('button.btn-dark-orange').first().click() //tombol pesan
 
     //input isi data pesanan
     cy.get('#qty')
@@ -265,7 +266,7 @@ describe('case lewati unit', () => {
       .contains('DAFTAR ORDER').click()
     cy.get('#btn_filter1').click()
     cy.get('#nomor_lelang')
-      .type('Lelang/IK/01NRML{enter}')
+      .type('Lelang/IK/Otomasi{enter}')
     cy.get('.mb_15 > :nth-child(4) .select2-selection').click()
     cy.get('.select2-search__field').type('Proses Validasi{enter}')
     cy.get('#view_filter_orderlist1 > :nth-child(1) > .main-card > .card-body > .row > .col-md-12 > div > .button_filter')
@@ -295,7 +296,7 @@ describe('case lewati unit', () => {
       .contains('DAFTAR ORDER').click()
     cy.get('#btn_filter1').click()
     cy.get('#nomor_lelang')
-      .type('Lelang/IK/01NRML{enter}')
+      .type('Lelang/IK/Otomasi{enter}')
     cy.get('.mb_15 > :nth-child(3) .select2-selection').click()
     cy.get('.select2-search__field').type('Konfirmasi Unit{enter}')
     cy.get('#view_filter_orderlist1 > :nth-child(1) > .main-card > .card-body > .row > .col-md-12 > div > .button_filter')
@@ -407,7 +408,7 @@ describe.skip('create order', () => {
       .contains('DAFTAR ORDER').click()
     cy.get('#btn_filter1').click()
     cy.get('#nomor_lelang')
-      .type('Lelang/IK/01NRML{enter}')
+      .type('Lelang/IK/Otomasi{enter}')
     cy.get('.mb_15 > :nth-child(4) .select2-selection').click()
     cy.get('.select2-search__field').type('Proses Validasi{enter}')
     cy.get('#view_filter_orderlist1 > :nth-child(1) > .main-card > .card-body > .row > .col-md-12 > div > .button_filter')
