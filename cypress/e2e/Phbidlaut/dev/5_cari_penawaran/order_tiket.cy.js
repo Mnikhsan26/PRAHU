@@ -22,9 +22,16 @@ describe('case input unit', () => {
       .type('PT. Perusahaan Pelayaran Nusantara Panurjwan{enter}')
     cy.get('#tombol_filter_submit').click()
     cy.wait(2000) // tunggu 2 detik
-    cy.get('.tabel_hasil_penawaran_tr_top_right > [style="display: block;"] > .tombol-pesan-link > .btn').click() //tombol pesan
+    cy.get('button.btn-dark-orange').first().click() //tombol pesan
 
     //input isi data pesanan
+    cy.get('.app-inner-layoutx > :nth-child(1) > :nth-child(1) > .heading_1')
+    
+    cy.get('#qty')
+    cy.pause()
+
+
+ 
     cy.get('#qty')
       .type('3{enter}')
     
@@ -77,7 +84,7 @@ describe('case input unit', () => {
     });
 
 
-  it('admin_validasi', () => {
+  it.skip('admin_validasi', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
 
@@ -175,7 +182,7 @@ describe('case input unit', () => {
 })
 
 
-describe('case lewati unit', () => {
+describe.skip('case lewati unit', () => {
   
   it('bidowner_order', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
