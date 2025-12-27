@@ -117,7 +117,7 @@ describe('loginbidder', () => {
   it('login_succes_ wa', () => {
     cy.visit('https://phbidlautdev.prahu-hub.com/user/login')
     cy.get('.heading_1').should('have.text','LOGIN')
-    cy.get('#email').type('0851550708691')
+    cy.get('#email').type('085155070869')
     accountphbl.PassAkun()
     accountphbl.BtnLogin()
     cy.get('.col-12 > div > :nth-child(2)').should('have.text','Daftar Pengajuan Lelang')
